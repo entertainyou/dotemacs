@@ -1,0 +1,11 @@
+#name : if (...) { ... } else if (...) { ... }
+# --
+if (${1:condition})
+{
+    ${2:statements;}
+}
+else if (${3:condition})
+{
+	${4:statements;}
+}
+$0

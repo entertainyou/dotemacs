@@ -1,0 +1,261 @@
+
+(require 'cc-mode)
+;; (c-set-offset 'inline-open 0)
+;; (c-set-offset 'friend '-)
+;; (c-set-offset 'substatement-open 0)
+
+(defun my-c-mode-common-hook()
+  ;; (hs-minor-mode t)
+  (c-subword-mode t)
+  (c-set-style "awk")
+  ;; (setq tab-width 4 indent-tabs-mode nil)
+  ;; (define-key c-mode-base-map [(control \`)] 'hs-toggle-hiding)
+  ;; (define-key c-mode-base-map [(return)] 'newline-add-indent)
+  ;; (define-key c-mode-base-map [(f7)] 'compile)
+  ;; (define-key c-mode-base-map [(tab)] 'my-indent-or-complete)
+  ;; (define-key c-mode-base-map [(meta ?/)] 'semantic-ia-complete-symbol-menu)
+  ;; (setq c-macro-shrink-window-flag t)
+  ;; (setq c-macro-preprocessor "cpp")
+  ;; (setq c-macro-cppflags " ")
+  ;; (setq c-macro-prompt-flag t)
+
+  ;; (setq abbrev-mode t)
+)
+
+(add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
+
+(defun my-c++-mode-hook()
+  (setq tab-width 4 indent-tabs-mode nil)
+  (c-set-style "stroustrup")
+)
+
+(defun auto-pair-mode ()
+  (interactive)
+  (make-local-variable 'skeleton-pair-alist)
+  (setq skeleton-pair-alist  '(
+    (?\' _ "'")
+    (?\( _ ")")
+    (?\[ _ "]")
+	(?\" _ "\"")
+	(?, " ")
+	;; (?: " ")
+	(?\; " ")
+    (?{ _ "}")))
+  (setq skeleton-pair t)
+  (local-set-key (kbd "(") 'skeleton-pair-insert-maybe)
+  (local-set-key (kbd "{") 'skeleton-pair-insert-maybe)
+  (local-set-key (kbd "\'") 'skeleton-pair-insert-maybe)
+  ;; (local-set-key (kbd ":") 'skeleton-pair-insert-maybe)
+  (local-set-key (kbd "\;") 'skeleton-pair-insert-maybe)
+  (local-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
+  (local-set-key (kbd ",") 'skeleton-pair-insert-maybe)
+  (local-set-key (kbd "[") 'skeleton-pair-insert-maybe)
+)
+
+(add-hook 'c-mode-common-hook 'auto-pair-mode)
+(add-hook 'emacs-lisp-mode-hook 'auto-pair-mode)
+
+;; (add-hook 'python-mode-hook 'auto-pair-mode)
+
+;; (require 'auto-complete-config)
+
+
+
+;; (require 'auto-complete-config)
+
+
+
+;; (require 'auto-complete)
+
+
+
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+
+(global-auto-complete-mode 1)
+(setq ac-use-fuzzy t)
+(ac-config-default)
+;; (require 'auto-complete)
+(require 'yasnippet)
+;; (defun ac-yasnippet-candidate ()
+;;   (let ((table (yas/get-snippet-tables major-mode)))
+;;     (if table
+;;       (let (candidates (list))
+;;             (mapc (lambda (mode)          
+;;               (maphash (lambda (key value)    
+;;                 (push key candidates))          
+;;               (yas/snippet-table-hash mode))) 
+;;             table)
+;;         (all-completions ac-prefix candidates)))))
+
+;; (defface ac-yasnippet-candidate-face
+;;   '((t (:background "sandybrown" :foreground "black")))
+;;   "Face for yasnippet candidate.")
+
+;; (defface ac-yasnippet-selection-face
+;;   '((t (:background "coral3" :foreground "white"))) 
+;;   "Face for the yasnippet selected candidate.")
+
+;; (defvar ac-source-yasnippet
+;;   '((candidates . ac-yasnippet-candidate)
+;;     (action . yas/expand)
+;;     (limit . 3)
+;;     (candidate-face . ac-yasnippet-candidate-face)
+;;     (selection-face . ac-yasnippet-selection-face)) 
+;;   "Source for Yasnippet.")
+(setq ac-sources (append ac-sources '(ac-source-dictionary)))
+;; (set-default 'ac-sources
+;;              '(ac-source-semantic
+;;                ac-source-yasnippet
+;;                ac-source-abbrev
+;;                ac-source-words-in-buffer
+;;                ac-source-words-in-all-buffer
+;;                ac-source-imenu
+;;                ac-source-files-in-current-dir
+;;                ac-source-filename))
+
+;; (add-hook 'c-mode-common-hook '(lambda ()
+;;           (setq ac-sources '(ac-source-semantic
+;; 							 ac-source-yasnippet
+;; 							 ;; ac-source-c-keywords
+;; 							 ac-source-abbrev
+;; 							 ac-source-words-in-buffer
+;; 							 ac-source-words-in-all-buffer
+;; 							 ac-source-files-in-current-dir
+;; 							 ac-source-filename
+;; 							 ))
+;; 		  ))
+;; (setq ac-trigger-commands '(self-insert-command autopair-insert-or-skip-quote))
+(global-set-key [(meta ?/)] 'yas/expand)
+;; (global-set-key [(backtab)] 'yas/expand)
+
+;; (defun ac-settings-4-c ()
+;;   (setq ac-omni-completion-sources (list (cons "\\." '(ac-source-semantic))
+;;                                          (cons "->" '(ac-source-semantic))))
+;;   (setq ac-sources
+;;         '(ac-source-yasnippet
+;;           ;; ac-source-c-keywords
+;;           ac-source-abbrev
+;;           ac-source-words-in-buffer
+;;           ac-source-words-in-all-buffer
+;;           ac-source-files-in-current-dir
+;;           ac-source-filename)))
+
+;; (add-hook 'c-mode-hook      'ac-settings-4-c)
+
+(require 'highlight-symbol)
+(global-set-key [(control f3)] 'highlight-symbol-at-point)
+(global-set-key [f3] 'highlight-symbol-next)
+(global-set-key [(shift f3)] 'highlight-symbol-prev)
+(global-set-key [(meta f3)] 'highlight-symbol-prev)
+
+(global-font-lock-mode t)
+;; (dolist (mode '(c-mode c++-mode java-mode lisp-mode emacs-lisp-mode lisp-interaction-mode sh-mode
+;;                        sgml-mode))
+;;   (font-lock-add-keywords mode
+;;                           '(("\\<\\(FIXME\\|TODO\\|Todo\\|HACK\\):" 1 font-lock-warning-face prepend)
+;;                             ("\\<\\(and\\|or\\|not\\)\\>" . font-lock-keyword-face)
+;;                             ("(\\|)" . beautiful-blue-face)
+;;                             ("\\[\\|]" . yellow-face)
+;;                             ("<\\|>" . cyan-face)
+;;                             ("{\\|}" . green-face))))
+;; (font-lock-add-keywords 'c-mode '(("(\\|)" . beautiful-blue-face)))
+;; (font-lock-add-keywords 'c-mode '(("\\[\\|]" . yellow-face)))
+;; (add-hook 'c-mode-hook
+;; 		  (lambda ()
+;; 			(font-lock-add-keywords nil
+;; 									'(("(\\|)" 1 yellow-face t)))))
+
+(font-lock-add-keywords 'c-mode
+						'(("\\<\\(FIXME\\):" 1 font-lock-warning-face prepend)
+						  ("\\<\\(and\\|or\\|not\\)\\>" . font-lock-keyword-face)
+						  ("\\((\\|)\\)" . font-lock-keyword-face)
+						  ("{\\|}" . font-lock-keyword-face)
+						  ("\\[\\|\\]" . font-lock-keyword-face)
+						  (";" . font-lock-keyword-face)
+						  ("," . font-lock-keyword-face)
+						  ;; ("(\\|)" . yellow-face)
+						  )
+						)
+
+(require 'doxymacs)
+(add-hook 'c-mode-common-hook 'doxymacs-mode)
+(defun my-doxymacs-font-lock-hook ()
+  (if (or (eq major-mode 'c-mode) (eq major-mode 'c++-mode))
+      (doxymacs-font-lock)))
+(add-hook 'font-lock-mode-hook 'my-doxymacs-font-lock-hook)
+(hl-line-mode t)
+
+(require 'align)
+(global-set-key "\C-x\C-j" 'align)
+
+(require 'generic-x)
+
+;; newline and ident
+(dolist (map (list lisp-mode-map emacs-lisp-mode-map lisp-interaction-mode-map
+                   awk-mode-map java-mode-map
+                    c-mode-base-map))
+  (define-key map (kbd "RET") 'newline-and-indent)
+  (define-key map (kbd "<return>") 'newline-and-indent))
+
+;; (add-to-list 'load-path "~/.emacs.d/cedet/common/")
+;; (load-file "~/.emacs.d/cedet/common/cedet.el")
+;; (require 'cedet)
+;; (require 'semantic-ia)
+;; (global-ede-mode 1)
+;; (semantic-load-enable-excessive-code-helpers)
+;; (semantic-load-enable-semantic-debugging-helpers)
+
+;; Enable SRecode (Template management) minor-mode.
+;; (global-srecode-minor-mode 1)
+
+;; (require 'docbook-xml-mode)
+
+;; (add-hook 'docbook-xml-mode-hook
+;; 		  (function (lambda ()
+;; 					  (setq outline-regexp "<!\\-\\-\\*+")
+;; 					  (outline-minor-mode)
+;; 					  (hide-body))))
+
+;; Emacs template
+
+(require 'template)
+(template-initialize)
+
+;; (load-file "/usr/share/emacs/site-lisp/cedet/common/cedet.el")
+;; (require 'cedet)
+;; (global-ede-mode 1)
+;; (semantic-load-enable-code-helpers)
+;; (semantic-idle-tag-highlight-mode)
+;; (add-hook 'c-mode-common-hook 'semantic-idle-tag-highlight-mode)
+;; (semantic-load-enable-semantic-debugging-helpers)
+
+;; (global-set-key [f12] 'semantic-ia-fast-jump)
+;; (global-set-key [S-f12]
+;;                 (lambda ()
+;;                   (interactive)
+;;                   (if (ring-empty-p (oref semantic-mru-bookmark-ring ring))
+;;                       (error "Semantic Bookmark ring is currently empty"))
+;;                   (let* ((ring (oref semantic-mru-bookmark-ring ring))
+;;                          (alist (semantic-mrub-ring-to-assoc-list ring))
+;;                          (first (cdr (car alist))))
+;;                     (if (semantic-equivalent-tag-p (oref first tag)
+;;                                                    (semantic-current-tag))
+;;                         (setq first (cdr (car (cdr alist)))))
+;;                     (semantic-mrub-switch-tags first))))
+;; (define-key c-mode-base-map (kbd "M-n") 'semantic-ia-complete-symbol-menu)
+
+;; (require 'semantic-tag-folding nil 'noerror)
+;; (global-semantic-tag-folding-mode 1)
+;; (define-key semantic-tag-folding-mode-map (kbd "C-c , -") 'semantic-tag-folding-fold-block)
+;; (define-key semantic-tag-folding-mode-map (kbd "C-c , +") 'semantic-tag-folding-show-block)
+;; (define-key semantic-tag-folding-mode-map (kbd "C-c _") 'semantic-tag-folding-fold-block)
+;; (define-key semantic-tag-folding-mode-map (kbd "C-c +") 'semantic-tag-folding-show-block)
+
+;; (define-key semantic-tag-folding-mode-map (kbd "C-_") 'semantic-tag-folding-fold-all)
+;; (define-key semantic-tag-folding-mode-map (kbd "C-+") 'semantic-tag-folding-show-all)
+
+;; (require 'ecb)
+;; (setq ecb-tip-of-the-day nil)
+
+(provide 'emacs-programming)

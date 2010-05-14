@@ -1,0 +1,104 @@
+(setq user-full-name "EntertainYou")
+(setq user-mail-address "grubbyfans@gmail.com")
+
+
+(require 'color-theme)
+(setq default-major-mode 'text-mode)
+(setq default-fill-column 80)
+;; (if window-system
+(color-theme-initialze)
+(color-theme-deep-blue)
+;; )
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+
+;; F10 for menu
+(scroll-bar-mode -1)
+(setq initial-scratch-message "")
+(global-set-key [(f10)] 'menu-bar-mode)
+(global-set-key [(f2)] 'emacs-lisp-byte-compile)
+(setq version-control t)
+(setq kept-old-versions 2)
+(setq kept-new-versions 10)
+(setq delete-old-versions t)
+(setq backup-directory-alist '(("." . "~/.emacs.d/backup")))
+(setq backup-by-copying t)
+(setq make-backup-file t)
+
+;; (global-set-key [(meta ?/)] 'hippie-expand)
+;; (setq hippie-expand-try-functions-list
+;;   '(
+;;   try-expand-line ; 补全当前行
+;;   try-expand-line-all-buffers
+;;   try-expand-list ; 补全一个列表
+;;   try-expand-list-all-buffers
+;;   try-expand-dabbrev ; 搜索当前 buffer
+;;   try-expand-dabbrev-visible ; 搜索当前可见窗口
+;;   try-expand-dabbrev-all-buffers ; 搜索所有 buffer
+;;   try-expand-dabbrev-from-kill ; 从 kill-ring 中搜索
+;;   try-complete-file-name ; 文件名匹配
+;;   try-complete-file-name-partially ; 文件名部分匹配
+;;   try-complete-lisp-symbol ; 补全 lisp symbol
+;;   try-complete-lisp-symbol-partially ; 部分补全 elisp symbol
+;;   try-expand-whole-kill
+;;   )
+;;   )
+
+(display-time-mode 1)
+(setq display-time-24hr-format t)
+(setq display-time-day-and-date t)
+(setq display-time-interval 10)
+;; (setq display-time-format "%m %d %H:%M")
+(setq display-time-format "%X")
+(setq default-major-mode 'text-mode)
+
+;; (setq font-lock-maximum-decoration t)
+(fset 'yes-or-no-p 'y-or-n-p)
+(setq uniquify-buffer-name-style 'forward)
+(mouse-avoidance-mode 'animate)
+
+(setq default-fill-column 60)
+(setq default-tab-width 4)
+
+(blink-cursor-mode -1)
+(transient-mark-mode 1)
+(show-paren-mode 1)
+(mouse-wheel-mode t)
+
+(setq visible-bell nil)
+;; (setq next-line-add-newlines t)
+
+(global-linum-mode t)
+(setq mouse-yank-at-point t)			
+(setq x-select-enable-clipboard t)
+(setq inhibit-startup-message t)
+(setq require-final-newline t)
+(setq kill-ring-max 200)
+
+(setq apropos-do-all t)
+
+;; (global-set-key (kbd "C-<tab>") 'dabbrev-expand)
+(setq frame-title-format "%b  [EMACS 23@Archlinux]")
+;; (server-start)
+;; (setq icon-map-list '(x-gtk-stock-map))				
+(global-auto-revert-mode 1)
+
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/emhacks")
+(require 'tabbar)
+(tabbar-mode t)
+
+
+
+;; shell
+;; (autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+
+(add-to-list 'load-path "~/.emacs.d/yasnippet-0.6.1c/")
+
+(require 'yasnippet)
+
+;; (load-file "~/.emacs.d/yasnippet/yasnippet.el")
+(yas/initialize)
+(yas/load-directory "~/.emacs.d/yasnippet-0.6.1c/snippets")
+(column-number-mode t)
+(provide 'emacs-basic)
