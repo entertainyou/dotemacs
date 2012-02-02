@@ -17,3 +17,4 @@
 
 
 (require 'weih-basic "~/.emacs.d/weih/weih-basic.el")
+(require 'weih-prog "~/.emacs.d/weih/weih-prog.el")
