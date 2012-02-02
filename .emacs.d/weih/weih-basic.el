@@ -74,15 +74,14 @@ there's a region, all lines that region covers will be duplicated."
 (global-set-key [(f2)] 'emacs-lisp-byte-compile)
 
 
-;; (require 'highlight-symbol)
-;; (global-set-key (kbd "C-c h h") 'highlight-symbol-at-point)
-;; (global-set-key (kbd "C-c h n") 'highlight-symbol-next)
-;; (global-set-key (kbd "C-c h p") 'highlight-symbol-prev)
-;; (global-set-key (kbd "C-c n") 'highlight-symbol-next)
-;; (global-set-key (kbd "C-c p") 'highlight-symbol-prev)
+(require 'highlight-symbol)
+(global-set-key (kbd "C-c h h") 'highlight-symbol-at-point)
+(global-set-key (kbd "C-c h n") 'highlight-symbol-next)
+(global-set-key (kbd "C-c h p") 'highlight-symbol-prev)
+(global-set-key (kbd "C-c n") 'highlight-symbol-next)
+(global-set-key (kbd "C-c p") 'highlight-symbol-prev)
 
 (global-set-key (kbd "C-c v") 'magit-status)
-(global-set-key (kbd "M-g") 'goto-line)
 (global-set-key (kbd "C-c =") 'enlarge-window)
 (global-set-key (kbd "C-c -") 'shrink-window)
 
