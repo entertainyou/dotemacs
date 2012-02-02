@@ -87,7 +87,7 @@ there's a region, all lines that region covers will be duplicated."
 
 (global-set-key (kbd "C-c y") 'yas/expand)
 
-(add-to-list 'load-path "/home/weih/.emacs.d/icicles")
+(add-to-list 'load-path "~/.emacs.d/weih/icicles")
 (require 'icicles)
 (setq icicle-show-Completions-initially-f  t)
 (icy-mode t)
@@ -127,7 +127,7 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
 
 (setq-default indent-tabs-mode nil)
 
-(add-to-list 'load-path "~/.emacs.d/expand-region.el/")
+(add-to-list 'load-path "~/.emacs.d/weih/expand-region.el/")
 (require 'expand-region)
 (global-set-key (kbd "C-@") 'er/expand-region)
 
