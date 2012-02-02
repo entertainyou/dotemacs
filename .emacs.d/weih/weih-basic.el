@@ -39,6 +39,7 @@
 
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
+(require 'yasnippet)
 (yas/initialize)
 (yas/load-directory "~/.emacs.d/snippets")
 
