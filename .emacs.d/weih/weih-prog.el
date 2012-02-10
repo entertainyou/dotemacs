@@ -93,4 +93,5 @@
 (require 'autopair)
 (autopair-global-mode)
 
+(add-to-list 'auto-mode-alist '("\\.bream\\'" . java-mode))
 (provide 'weih-prog)
