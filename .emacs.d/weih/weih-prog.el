@@ -72,7 +72,7 @@
 (setq mode-compile-expert-p t)
 (setq mode-compile-reading-time 0)
 
-(wrap-region-global-mode t)
+;; (wrap-region-global-mode t)
 (require 'magit)
 
 (add-to-list 'load-path "~/.emacs.d/weih/mark-multiple.el")
@@ -84,8 +84,8 @@
 (global-set-key (kbd "C->") 'mark-next-like-this)
 (global-set-key (kbd "C-M-m") 'mark-more-like-this) ; like the other two, but takes an argument (negative is previous)
 
-(require 'rename-sgml-tag)
-(define-key sgml-mode-map (kbd "C-c C-r") 'rename-sgml-tag)
+;; (require 'rename-sgml-tag)
+;; (define-key sgml-mode-map (kbd "C-c C-r") 'rename-sgml-tag)
 
 ;; (require 'js2-rename-var)
 ;; (define-key js2-mode-map (kbd "C-c C-r") 'js2-rename-var)
