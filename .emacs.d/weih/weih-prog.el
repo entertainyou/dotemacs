@@ -6,7 +6,7 @@
 (defun my-c-mode-common-hook()
   ;; (hs-minor-mode t)
   (subword-mode t)
-  (paredit-mode t)
+  ;; (paredit-mode t)
   ;; (gtags-mode t)
   (setq show-trailing-whitespace t)
   (c-set-style "awk")
@@ -19,7 +19,7 @@
 (add-hook 'c++-mode-common-hook 'my-c-mode-common-hook)
 
 (defun my_java_hook ()
-  (paredit-mode t)
+  ;; (paredit-mode t)
   (setq indent-tabs-mode nil)
   (setq show-trailing-whitespace t)
   (setq c-basic-offset 4)
@@ -89,5 +89,8 @@
 
 ;; (require 'js2-rename-var)
 ;; (define-key js2-mode-map (kbd "C-c C-r") 'js2-rename-var)
+
+(require 'autopair)
+(autopair-global-mode)
 
 (provide 'weih-prog)
