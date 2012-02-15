@@ -132,5 +132,8 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
 (require 'expand-region)
 (global-set-key (kbd "C-@") 'er/expand-region)
 
+(when (fboundp 'windmove-default-keybindings)
+  (windmove-default-keybindings))
+
 (provide 'weih-basic)
 
