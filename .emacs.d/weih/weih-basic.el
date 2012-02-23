@@ -135,5 +135,9 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 
+
+;; handle "same name" buffers
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets) 
 (provide 'weih-basic)
 
