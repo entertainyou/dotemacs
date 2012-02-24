@@ -70,7 +70,8 @@ there's a region, all lines that region covers will be duplicated."
 (global-set-key (kbd "C-c l") 'goto-line)
 (global-set-key (kbd "C-c m") 'menu-bar-mode)
 (global-set-key (kbd "C-c o") 'occur)
-(global-set-key (kbd "C-c r") 'query-replace-regexp)
+(global-set-key (kbd "C-c q") 'query-replace-regexp)
+(global-set-key (kbd "C-c r") 'replace-regexp)
 
 (global-set-key [(f2)] 'emacs-lisp-byte-compile)
 
