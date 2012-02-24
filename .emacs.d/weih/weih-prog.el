@@ -3,6 +3,8 @@
 (require 'gtags)
 (autoload 'gtags-mode "gtags" "" t)
 
+(setq gtags-select-buffer-single t)
+
 (defun my-c-mode-common-hook()
   ;; (hs-minor-mode t)
   (subword-mode t)
