@@ -31,7 +31,7 @@
 ;; * Opening braces/quotes are autopaired;
 ;; * Closing braces/quotes are autoskipped;
 ;; * Backspacing an opening brace/quote autodeletes its adjacent pair.
-;; * Newline between newly-opened brace pairs open an extra indented line.
+
 ;;
 ;; Autopair deduces from the current syntax table which characters to
 ;; pair, skip or delete.
@@ -344,8 +344,8 @@ For now, simply returns `last-command-event'"
            (define-key map (kbd "<backspace>") 'autopair-backspace)
            (define-key map [backspace] 'autopair-backspace)
            (define-key map (kbd "DEL") 'autopair-backspace)
-           (define-key map [return] 'autopair-newline)
-           (define-key map (kbd "RET") 'autopair-newline)
+           ;; (define-key map [return] 'autopair-newline)
+           ;; (define-key map (kbd "RET") 'autopair-newline)
            (dotimes (char 256) ;; only searches the first 256 chars,
              ;; TODO: is this enough/toomuch/stupid?
              (unless (member char

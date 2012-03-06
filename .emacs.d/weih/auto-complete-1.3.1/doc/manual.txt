@@ -1,4 +1,4 @@
-Title: Auto Complete Mode - User Manual
+1Title: Auto Complete Mode - User Manual
 Numbering: yes
 CSS: style.css
 

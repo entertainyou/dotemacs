@@ -31,7 +31,6 @@
 (add-hook 'java-mode-hook 'my_java_hook)
 
 
-
 (add-hook 'gtags-select-mode-hook
   '(lambda ()
      ;; (setq hl-line-face 'underline)
@@ -50,17 +49,24 @@
 (setq ac-use-fuzzy t)
 (ac-config-default)
 
+(setq ac-ignore-case 'smart)
+
 (global-auto-complete-mode t)
 
 (global-set-key (kbd "M-/") 'yas/expand)
 (global-set-key (kbd "<S-iso-lefttab>") 'yas/prev-field)
 (global-font-lock-mode t)
 
-(dolist (map (list lisp-mode-map emacs-lisp-mode-map lisp-interaction-mode-map
-                   awk-mode-map java-mode-map
-                    c-mode-base-map))
-  (define-key map (kbd "RET") 'newline-and-indent)
-  (define-key map (kbd "<return>") 'newline-and-indent))
+;; ;; this conflicts with auto complete, RET to choose current choice.
+;; (dolist (map (list lisp-mode-map emacs-lisp-mode-map lisp-interaction-mode-map
+;;                    awk-mode-map java-mode-map
+;;                     c-mode-base-map))
+;;   (define-key map (kbd "RET") 'newline-and-indent)
+;;   (define-key map (kbd "<return>") 'newline-and-indent))
+
+;; (global-set-key (kbd "RET") 'newline-and-indent)
+;; (global-set-key (kbd "<return>") 'newline-and-indent)
+(define-key global-map (kbd "RET") 'newline-and-indent)
 
 (global-set-key (kbd "C-c g f") 'gtags-find-file)
 (global-set-key (kbd "C-c g t") 'gtags-find-tag)
@@ -97,4 +103,5 @@
 (autopair-global-mode)
 
 (add-to-list 'auto-mode-alist '("\\.bream\\'" . java-mode))
+(add-to-list 'auto-mode-alist '("\\.inc\\'" . c-mode))
 (provide 'weih-prog)
