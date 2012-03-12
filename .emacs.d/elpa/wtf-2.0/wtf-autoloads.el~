@@ -1,0 +1,13 @@
+;;; wtf-autoloads.el --- automatically extracted autoloads
+;;
+;;; Code:
+
+
+(provide 'wtf-autoloads)
+;; Local Variables:
+;; version-control: never
+;; no-byte-compile: t
+;; no-update-autoloads: t
+;; coding: utf-8
+;; End:
+;;; wtf-autoloads.el ends here
