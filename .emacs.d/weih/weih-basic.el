@@ -245,5 +245,14 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
 ;; load generic modes which support e.g. batch files
 (require 'generic-x)
 
+(setq
+ backup-by-copying t      ; don't clobber symlinks
+ backup-directory-alist
+ '(("." . "~/.saves"))    ; don't litter my fs tree
+ delete-old-versions t
+ kept-new-versions 6
+ kept-old-versions 2
+ version-control t)       ; use versioned backups
+
 (provide 'weih-basic)
 
