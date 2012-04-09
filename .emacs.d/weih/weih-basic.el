@@ -192,16 +192,16 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
                 objc-mode latex-mode plain-tex-mode python-mode))
       (indent-region (region-beginning) (region-end) nil)))
 
-(add-hook 'autoconf-mode-hook   'flyspell-prog-mode)
-(add-hook 'autotest-mode-hook   'flyspell-prog-mode)
-(add-hook 'c++-mode-hook        'flyspell-prog-mode)
-(add-hook 'c-mode-hook          'flyspell-prog-mode)
-(add-hook 'cperl-mode-hook      'flyspell-prog-mode)
-(add-hook 'emacs-lisp-mode-hook 'flyspell-prog-mode)
-(add-hook 'makefile-mode-hook   'flyspell-prog-mode)
-(add-hook 'nxml-mode-hook       'flyspell-prog-mode)
-(add-hook 'python-mode-hook     'flyspell-prog-mode)
-(add-hook 'sh-mode-hook         'flyspell-prog-mode)
+;; (add-hook 'autoconf-mode-hook   'flyspell-prog-mode)
+;; (add-hook 'autotest-mode-hook   'flyspell-prog-mode)
+;; (add-hook 'c++-mode-hook        'flyspell-prog-mode)
+;; (add-hook 'c-mode-hook          'flyspell-prog-mode)
+;; (add-hook 'cperl-mode-hook      'flyspell-prog-mode)
+;; (add-hook 'emacs-lisp-mode-hook 'flyspell-prog-mode)
+;; (add-hook 'makefile-mode-hook   'flyspell-prog-mode)
+;; (add-hook 'nxml-mode-hook       'flyspell-prog-mode)
+;; (add-hook 'python-mode-hook     'flyspell-prog-mode)
+;; (add-hook 'sh-mode-hook         'flyspell-prog-mode)
 
 ;; If you want to check the result each time before repeating, then
 ;; `C-x e e e...'.
