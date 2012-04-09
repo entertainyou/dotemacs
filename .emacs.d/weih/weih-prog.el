@@ -104,4 +104,14 @@
 
 (add-to-list 'auto-mode-alist '("\\.bream\\'" . java-mode))
 (add-to-list 'auto-mode-alist '("\\.inc\\'" . c-mode))
+
+
+
+;; (setq scheme-program-name "gsi -:d-")
+;; (setq scheme-program-name "guile")
+;; (setq scheme-program-arguments "")
+
+;; (require 'xscheme)
+
+(require 'geiser-install)
 (provide 'weih-prog)
