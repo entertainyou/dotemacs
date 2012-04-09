@@ -89,6 +89,8 @@ there's a region, all lines that region covers will be duplicated."
 
 (global-set-key (kbd "C-c y") 'yas/expand)
 
+(global-set-key (kbd "C-x C-j") 'dired-jump)
+
 (add-to-list 'load-path "~/.emacs.d/weih/icicles")
 (require 'icicles)
 (setq icicle-show-Completions-initially-f  t)
