@@ -14,6 +14,7 @@
   (setq show-trailing-whitespace t)
   (c-set-style "awk")
   (c-set-offset 'inline-open 0)
+  (hide-ifdef-mode)
   ;; (textmate-mode)
   (setq ac-sources (append '(ac-source-yasnippet) ac-sources))
   )
