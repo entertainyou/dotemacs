@@ -1,6 +1,6 @@
 ;; HUANG Wei's emacs setting
-(setq user-full-name "entertainyou")
-(setq user-mail-address "grubbyfans@gmail.com")
+;; (setq user-full-name "entertainyou")
+;; (setq user-mail-address "grubbyfans@gmail.com")
 
 (setq major-mode 'text-mode)
 
@@ -68,7 +68,8 @@ there's a region, all lines that region covers will be duplicated."
 (global-set-key (kbd "C-c f") 'find-grep)
 (global-set-key (kbd "C-c d") 'duplicate-current-line-or-region)
 (global-set-key (kbd "C-c l") 'goto-line)
-(global-set-key (kbd "C-c m") 'menu-bar-mode)
+;; (global-set-key (kbd "C-c m") 'menu-bar-mode)
+(global-set-key (kbd "C-c m") 'notmuch)
 (global-set-key (kbd "C-c o") 'occur)
 (global-set-key (kbd "C-c q") 'query-replace-regexp)
 (global-set-key (kbd "C-c r") 'replace-regexp)

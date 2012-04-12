@@ -18,6 +18,8 @@
 
 (require 'weih-basic "~/.emacs.d/weih/weih-basic.el")
 (require 'weih-prog "~/.emacs.d/weih/weih-prog.el")
+(require 'weih-mail "~/.emacs.d/weih/weih-mail.el")
+
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
