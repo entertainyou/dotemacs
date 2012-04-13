@@ -163,18 +163,18 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
       (forward-line -1)
       (forward-char col))))
 
-(defun move-line-up (n)
-  "Move the current line up by N lines."
-  (interactive "p")
-  (move-line (if (null n) -1 (- n))))
+;; (defun move-line-up (n)
+;;   "Move the current line up by N lines."
+;;   (interactive "p")
+;;   (move-line (if (null n) -1 (- n))))
 
-(defun move-line-down (n)
-  "Move the current line down by N lines."
-  (interactive "p")
-  (move-line (if (null n) 1 n)))
+;; (defun move-line-down (n)
+;;   "Move the current line down by N lines."
+;;   (interactive "p")
+;;   (move-line (if (null n) 1 n)))
 
-(global-set-key (kbd "<M-up>") 'move-line-up)
-(global-set-key (kbd "<M-down>") 'move-line-down)
+;; (global-set-key (kbd "<M-up>") 'move-line-up)
+;; (global-set-key (kbd "<M-down>") 'move-line-down)
 
 ;; ignore case when reading a file name
 (setq read-file-name-completion-ignore-case t)
@@ -256,6 +256,20 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
  kept-new-versions 6
  kept-old-versions 2
  version-control t)       ; use versioned backups
+
+(require 'dired-isearch)
+(define-key dired-mode-map (kbd "C-s") 'dired-isearch-forward)
+(define-key dired-mode-map (kbd "C-r") 'dired-isearch-backward)
+(define-key dired-mode-map (kbd "ESC C-s") 'dired-isearch-forward-regexp)
+(define-key dired-mode-map (kbd "ESC C-r") 'dired-isearch-backward-regexp)
+
+(require 'drag-stuff)
+(drag-stuff-global-mode)
+
+
+(add-to-list 'load-path "~/.emacs.d/weih/ace-jump-mode")
+(require 'ace-jump-mode)
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
 (provide 'weih-basic)
 
