@@ -6,12 +6,15 @@
 
 (setq fill-column 80)
 
-(require 'color-theme)
-(color-theme-initialize)
-(require 'color-theme-blackboard)
 
-(color-theme-blackboard)
+(add-to-list 'load-path "/usr/share/emacs/site-lisp")
+;; (require 'color-theme)
+;; (color-theme-initialize)
+;; (require 'color-theme-blackboard)
 
+;; (color-theme-blackboard)
+
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 
@@ -92,10 +95,11 @@ there's a region, all lines that region covers will be duplicated."
 
 (global-set-key (kbd "C-x C-j") 'dired-jump)
 
-(add-to-list 'load-path "~/.emacs.d/weih/icicles")
-(require 'icicles)
-(setq icicle-show-Completions-initially-f  t)
-(icy-mode t)
+;; (add-to-list 'load-path "~/.emacs.d/weih/icicles")
+
+;; (require 'icicles)
+;; (setq icicle-show-Completions-initially-f  t)
+;; (icy-mode t)
 
 (require 'rainbow-mode)
 (rainbow-mode t)
@@ -257,11 +261,11 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
  kept-old-versions 2
  version-control t)       ; use versioned backups
 
-(require 'dired-isearch)
-(define-key dired-mode-map (kbd "C-s") 'dired-isearch-forward)
-(define-key dired-mode-map (kbd "C-r") 'dired-isearch-backward)
-(define-key dired-mode-map (kbd "ESC C-s") 'dired-isearch-forward-regexp)
-(define-key dired-mode-map (kbd "ESC C-r") 'dired-isearch-backward-regexp)
+;; (require 'dired-isearch)
+;; (define-key dired-mode-map (kbd "C-s") 'dired-isearch-forward)
+;; (define-key dired-mode-map (kbd "C-r") 'dired-isearch-backward)
+;; (define-key dired-mode-map (kbd "ESC C-s") 'dired-isearch-forward-regexp)
+;; (define-key dired-mode-map (kbd "ESC C-r") 'dired-isearch-backward-regexp)
 
 (require 'drag-stuff)
 (drag-stuff-global-mode)
@@ -271,5 +275,6 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
 (require 'ace-jump-mode)
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
+;; (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (provide 'weih-basic)
 
