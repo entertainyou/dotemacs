@@ -12,6 +12,9 @@
 ;; (color-theme-initialize)
 ;; (require 'color-theme-blackboard)
 
+(when (require 'solarized-theme nil t)
+  (load-theme 'solarized-dark t)
+)
 ;; (color-theme-blackboard)
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
@@ -41,9 +44,10 @@
 
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
-(require 'yasnippet)
-(yas/initialize)
-(yas/load-directory "~/.emacs.d/snippets")
+(when (require 'yasnippet nil t)
+  (yas/initialize)
+  (yas/load-directory "~/.emacs.d/snippets")
+)
 
 (column-number-mode t)
 
@@ -136,7 +140,7 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
 
 (setq-default indent-tabs-mode nil)
 
-(add-to-list 'load-path "~/.emacs.d/weih/expand-region.el/")
+;; (add-to-list 'load-path "~/.emacs.d/weih/expand-region.el/")
 (require 'expand-region)
 (global-set-key (kbd "C-@") 'er/expand-region)
 
@@ -261,11 +265,12 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
  kept-old-versions 2
  version-control t)       ; use versioned backups
 
-;; (require 'dired-isearch)
-;; (define-key dired-mode-map (kbd "C-s") 'dired-isearch-forward)
-;; (define-key dired-mode-map (kbd "C-r") 'dired-isearch-backward)
-;; (define-key dired-mode-map (kbd "ESC C-s") 'dired-isearch-forward-regexp)
-;; (define-key dired-mode-map (kbd "ESC C-r") 'dired-isearch-backward-regexp)
+(when (require 'dired-isearch nil t)
+  (define-key dired-mode-map (kbd "C-s") 'dired-isearch-forward)
+  (define-key dired-mode-map (kbd "C-r") 'dired-isearch-backward)
+  (define-key dired-mode-map (kbd "ESC C-s") 'dired-isearch-forward-regexp)
+  (define-key dired-mode-map (kbd "ESC C-r") 'dired-isearch-backward-regexp)
+)
 
 (require 'drag-stuff)
 (drag-stuff-global-mode)
