@@ -6,15 +6,20 @@
 
 (setq fill-column 80)
 
-
 (add-to-list 'load-path "/usr/share/emacs/site-lisp")
 ;; (require 'color-theme)
 ;; (color-theme-initialize)
 ;; (require 'color-theme-blackboard)
 
-(when (require 'solarized-theme nil t)
-  (load-theme 'solarized-dark t)
-)
+;; (when (require 'solarized-theme nil t)
+;;   (load-theme 'solarized-dark t)
+;; )
+
+;; (when (require 'tango-2 nil t)
+;;   (load-theme 'tango-2 t)
+;;   )
+
+(load-theme 'tango-dark t)
 ;; (color-theme-blackboard)
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
@@ -47,6 +52,8 @@
 (when (require 'yasnippet nil t)
   (yas/initialize)
   (yas/load-directory "~/.emacs.d/snippets")
+  (global-set-key (kbd "M-/") 'yas/expand)
+  (global-set-key (kbd "<S-iso-lefttab>") 'yas/prev-field)
 )
 
 (column-number-mode t)
@@ -275,11 +282,8 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
 (require 'drag-stuff)
 (drag-stuff-global-mode)
 
-
-(add-to-list 'load-path "~/.emacs.d/weih/ace-jump-mode")
 (require 'ace-jump-mode)
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
-;; (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (provide 'weih-basic)
 
