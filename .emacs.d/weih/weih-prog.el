@@ -34,7 +34,6 @@
 
 (add-hook 'java-mode-hook 'my-java-hook)
 
-
 (add-hook 'gtags-select-mode-hook
   '(lambda ()
      ;; (setq hl-line-face 'underline)

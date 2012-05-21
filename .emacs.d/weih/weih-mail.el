@@ -31,4 +31,7 @@
 (if (not (fboundp 'gnus-blocked-images))
     (defun gnus-blocked-images () nil))
 
+(define-key notmuch-hello-mode-map (kbd "g") 'notmuch-hello-poll-and-update)
+(define-key notmuch-hello-mode-map (kbd "G") 'self-insert-command)
+
 (provide 'weih-mail)
