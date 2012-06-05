@@ -34,7 +34,7 @@
 
 (setq tab-width 4)
 ;;; hightlight mark region
-(transient-mark-mode t)
+;; (transient-mark-mode t)
 
 ;;; highlight matching parenthsis
 (show-paren-mode t)
