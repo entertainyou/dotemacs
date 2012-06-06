@@ -160,23 +160,23 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
 ;; (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 (setq uniquify-buffer-name-style 'forward)
 
-(defun move-line (n)
-  "Move the current line up or down by N lines."
-  (interactive "p")
-  (let ((col (current-column))
-        start
-        end)
-    (beginning-of-line)
-    (setq start (point))
-    (end-of-line)
-    (forward-char)
-    (setq end (point))
-    (let ((line-text (delete-and-extract-region start end)))
-      (forward-line n)
-      (insert line-text)
-      ;; restore point to original column in moved line
-      (forward-line -1)
-      (forward-char col))))
+;; (defun move-line (n)
+;;   "Move the current line up or down by N lines."
+;;   (interactive "p")
+;;   (let ((col (current-column))
+;;         start
+;;         end)
+;;     (beginning-of-line)
+;;     (setq start (point))
+;;     (end-of-line)
+;;     (forward-char)
+;;     (setq end (point))
+;;     (let ((line-text (delete-and-extract-region start end)))
+;;       (forward-line n)
+;;       (insert line-text)
+;;       ;; restore point to original column in moved line
+;;       (forward-line -1)
+;;       (forward-char col))))
 
 ;; (defun move-line-up (n)
 ;;   "Move the current line up by N lines."
@@ -209,17 +209,6 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
               '(emacs-lisp-mode scheme-mode lisp-mode c-mode c++-mode
                 objc-mode latex-mode plain-tex-mode python-mode))
       (indent-region (region-beginning) (region-end) nil)))
-
-;; (add-hook 'autoconf-mode-hook   'flyspell-prog-mode)
-;; (add-hook 'autotest-mode-hook   'flyspell-prog-mode)
-;; (add-hook 'c++-mode-hook        'flyspell-prog-mode)
-;; (add-hook 'c-mode-hook          'flyspell-prog-mode)
-;; (add-hook 'cperl-mode-hook      'flyspell-prog-mode)
-;; (add-hook 'emacs-lisp-mode-hook 'flyspell-prog-mode)
-;; (add-hook 'makefile-mode-hook   'flyspell-prog-mode)
-;; (add-hook 'nxml-mode-hook       'flyspell-prog-mode)
-;; (add-hook 'python-mode-hook     'flyspell-prog-mode)
-;; (add-hook 'sh-mode-hook         'flyspell-prog-mode)
 
 ;; If you want to check the result each time before repeating, then
 ;; `C-x e e e...'.
