@@ -48,10 +48,10 @@
 ;; (require 'auto-complete-config "~/.emacs.d/weih/auto-complete-1.3.1/auto-complete-config.el")
 
 (when (require 'auto-complete-config nil t)
-  (setq ac-sources (append ac-sources '(ac-source-gtags)))
-  (setq ac-use-fuzzy t)
   (ac-config-default)
   (setq ac-ignore-case 'smart)
+  (setq ac-sources (append ac-sources '(ac-source-gtags)))
+  (setq ac-use-fuzzy t)
   (global-auto-complete-mode t)
 )
 
@@ -111,4 +111,9 @@
 ;; (require 'xscheme)
 
 (require 'geiser-install)
+
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
+(global-set-key (kbd "C--") 'er/contract-region)
+
 (provide 'weih-prog)

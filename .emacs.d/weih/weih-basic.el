@@ -147,10 +147,6 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
 
 (setq-default indent-tabs-mode nil)
 
-;; (add-to-list 'load-path "~/.emacs.d/weih/expand-region.el/")
-(require 'expand-region)
-(global-set-key (kbd "C-@") 'er/expand-region)
-
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 
