@@ -110,9 +110,9 @@ there's a region, all lines that region covers will be duplicated."
 
 ;; (add-to-list 'load-path "~/.emacs.d/weih/icicles")
 
-;; (require 'icicles)
+(require 'icicles)
 ;; (setq icicle-show-Completions-initially-f  t)
-;; (icy-mode t)
+(icy-mode t)
 
 (require 'rainbow-mode)
 (rainbow-mode t)
