@@ -52,8 +52,10 @@
 (when (require 'yasnippet nil t)
   (yas/initialize)
   (yas/load-directory "~/.emacs.d/snippets")
-  (global-set-key (kbd "M-/") 'yas/expand)
-  (global-set-key (kbd "<S-iso-lefttab>") 'yas/prev-field)
+  ;; (global-set-key (kbd "M-/") 'yas/expand)
+  ;; (global-set-key (kbd "<S-iso-lefttab>") 'yas/prev-field)
+  (define-key yas/keymap (kbd "M-/") 'yas/expand)
+  (define-key yas/keymap (kbd "<S-iso-lefttab>") 'yas/prev-field)
 )
 
 (column-number-mode t)
