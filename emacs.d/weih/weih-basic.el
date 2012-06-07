@@ -49,38 +49,45 @@
 
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
+;; (global-unset-key (kbd "M-/"))
 (when (require 'yasnippet nil t)
-  (yas/initialize)
-  (yas/load-directory "~/.emacs.d/snippets")
-  (define-key yas/keymap (kbd "M-/") 'yas/expand)
+  ;; (yas/initialize)
+  ;; (yas/load-directory "~/.emacs.d/snippets")
+  (yas/global-mode t)
+  ;; (define-key yas/keymap (kbd "M-/") 'yas/expand)
+  (global-set-key (kbd "M-/") 'yas/expand)
   (define-key yas/keymap (kbd "<S-iso-lefttab>") 'yas/prev-field)
 )
 
 (column-number-mode t)
 
-(defun duplicate-current-line-or-region (arg)
-  "Duplicates the current line or region ARG times.
-If there's no region, the current line will be duplicated. However, if
-there's a region, all lines that region covers will be duplicated."
-  (interactive "p")
-  (let (beg end (origin (point)))
-    (if (and mark-active (> (point) (mark)))
-        (exchange-point-and-mark))
-    (setq beg (line-beginning-position))
-    (if mark-active
-        (exchange-point-and-mark))
-    (setq end (line-end-position))
-    (let ((region (buffer-substring-no-properties beg end)))
-      (dotimes (i arg)
-        (goto-char end)
-        (newline)
-        (insert region)
-        (setq end (point)))
-      (goto-char (+ origin (* (length region) arg) arg))))
-  (message "line(s) are duplicated"))
+;; (defun duplicate-current-line-or-region (arg)
+;;   "Duplicates the current line or region ARG times.
+;; If there's no region, the current line will be duplicated. However, if
+;; there's a region, all lines that region covers will be duplicated."
+;;   (interactive "p")
+;;   (let (beg end (origin (point)))
+;;     (if (and mark-active (> (point) (mark)))
+;;         (exchange-point-and-mark))
+;;     (setq beg (line-beginning-position))
+;;     (if mark-active
+;;         (exchange-point-and-mark))
+;;     (setq end (line-end-position))
+;;     (let ((region (buffer-substring-no-properties beg end)))
+;;       (dotimes (i arg)
+;;         (goto-char end)
+;;         (newline)
+;;         (insert region)
+;;         (setq end (point)))
+;;       (goto-char (+ origin (* (length region) arg) arg))))
+;;   (message "line(s) are duplicated"))
 
 (global-set-key (kbd "C-c f") 'find-grep)
-(global-set-key (kbd "C-c d") 'duplicate-current-line-or-region)
+
+(when (require 'duplicate-thing nil t)
+  (global-set-key (kbd "C-c d") 'duplicate-thing)
+)
+
 (global-set-key (kbd "C-c l") 'goto-line)
 ;; (global-set-key (kbd "C-c m") 'menu-bar-mode)
 (global-set-key (kbd "C-c m") 'notmuch)
@@ -270,5 +277,6 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
 (require 'ace-jump-mode)
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
+(require 'dired-single)
 (provide 'weih-basic)
 
