@@ -7,20 +7,7 @@
 (setq fill-column 80)
 
 (add-to-list 'load-path "/usr/share/emacs/site-lisp")
-;; (require 'color-theme)
-;; (color-theme-initialize)
-;; (require 'color-theme-blackboard)
-
-;; (when (require 'solarized-theme nil t)
-;;   (load-theme 'solarized-dark t)
-;; )
-
-;; (when (require 'tango-2 nil t)
-;;   (load-theme 'tango-2 t)
-;;   )
-
 (load-theme 'tango-dark t)
-;; (color-theme-blackboard)
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (menu-bar-mode -1)
@@ -33,8 +20,6 @@
 (mouse-avoidance-mode 'animate)
 
 (setq tab-width 4)
-;;; hightlight mark region
-;; (transient-mark-mode t)
 
 ;;; highlight matching parenthsis
 (show-paren-mode t)
@@ -51,10 +36,7 @@
 
 ;; (global-unset-key (kbd "M-/"))
 (when (require 'yasnippet nil t)
-  ;; (yas/initialize)
-  ;; (yas/load-directory "~/.emacs.d/snippets")
   (yas/global-mode t)
-  ;; (define-key yas/keymap (kbd "M-/") 'yas/expand)
   (global-set-key (kbd "M-/") 'yas/expand)
   (define-key yas/keymap (kbd "<S-iso-lefttab>") 'yas/prev-field)
 )
@@ -90,8 +72,6 @@
 (global-set-key (kbd "C-c y") 'yas/expand)
 
 (global-set-key (kbd "C-x C-j") 'dired-jump)
-
-;; (add-to-list 'load-path "~/.emacs.d/weih/icicles")
 
 (require 'icicles)
 ;; (setq icicle-show-Completions-initially-f  t)
@@ -140,37 +120,6 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
 (require 'uniquify)
 ;; (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 (setq uniquify-buffer-name-style 'forward)
-
-;; (defun move-line (n)
-;;   "Move the current line up or down by N lines."
-;;   (interactive "p")
-;;   (let ((col (current-column))
-;;         start
-;;         end)
-;;     (beginning-of-line)
-;;     (setq start (point))
-;;     (end-of-line)
-;;     (forward-char)
-;;     (setq end (point))
-;;     (let ((line-text (delete-and-extract-region start end)))
-;;       (forward-line n)
-;;       (insert line-text)
-;;       ;; restore point to original column in moved line
-;;       (forward-line -1)
-;;       (forward-char col))))
-
-;; (defun move-line-up (n)
-;;   "Move the current line up by N lines."
-;;   (interactive "p")
-;;   (move-line (if (null n) -1 (- n))))
-
-;; (defun move-line-down (n)
-;;   "Move the current line down by N lines."
-;;   (interactive "p")
-;;   (move-line (if (null n) 1 n)))
-
-;; (global-set-key (kbd "<M-up>") 'move-line-up)
-;; (global-set-key (kbd "<M-down>") 'move-line-down)
 
 ;; ignore case when reading a file name
 (setq read-file-name-completion-ignore-case t)
@@ -224,7 +173,6 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
 ;; auto-save after 15 seconds idle time
 (setq auto-save-timeout 15)
 
-
 ;; always use copying to create backup files (don't clobber symlinks)
 (setq backup-by-copying t)
 
@@ -256,5 +204,6 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
 (require 'dired-single)
+
 (provide 'weih-basic)
 
