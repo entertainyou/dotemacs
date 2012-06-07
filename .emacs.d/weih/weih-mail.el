@@ -34,4 +34,5 @@
 (define-key notmuch-hello-mode-map (kbd "g") 'notmuch-hello-poll-and-update)
 (define-key notmuch-hello-mode-map (kbd "G") 'self-insert-command)
 
+(setq message-auto-save-directory "~/.emacs.d/Mail/drafts")
 (provide 'weih-mail)
