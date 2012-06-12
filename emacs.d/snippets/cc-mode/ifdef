@@ -1,0 +1,6 @@
+# name: #ifdef XXX; #endif /* XXX */
+# key: ifdef
+# --
+#ifdef ${1:MACOR_NAME}
+  `yas/selected-text`$0
+#endif /* $1 */
