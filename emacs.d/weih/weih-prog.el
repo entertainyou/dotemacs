@@ -101,7 +101,7 @@
   (autopair-global-mode)
 )
 
-(add-to-list 'auto-mode-alist '("\\.bream\\'" . java-mode))
+
 (add-to-list 'auto-mode-alist '("\\.inc\\'" . c-mode))
 
 ;; (setq scheme-program-name "gsi -:d-")
@@ -115,5 +115,13 @@
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "C--") 'er/contract-region)
+
+(define-derived-mode bream-mode java-mode
+  "bream mode"
+  (setq mode-name "bream")
+  ;; (font-lock-add-keywords 'bream-mode '(("\\<modifies\\>" . 'font-lock-warning-face)))
+  )
+
+(add-to-list 'auto-mode-alist '("\\.bream\\'" . bream-mode))
 
 (provide 'weih-prog)
