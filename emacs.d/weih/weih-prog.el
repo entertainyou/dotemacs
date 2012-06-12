@@ -7,6 +7,10 @@
 
 (global-font-lock-mode t)
 
+(defun remove-ac-yasnippet()
+  (setq ac-sources (delq 'ac-source-yasnippet ac-sources))
+  )
+
 (defun my-c-mode-common-hook()
   ;; (hs-minor-mode t)
   (subword-mode t)
@@ -19,8 +23,13 @@
   (hide-ifdef-mode)
   ;; (rainbow-delimiters-mode)
   ;; (textmate-mode)
-  (setq ac-sources (append '(ac-source-yasnippet) ac-sources))
+  ;; (setq ac-sources (append '(ac-source-gtags) ac-sources))
   )
+
+
+(add-hook 'emacs-lisp-mode-hook 'remove-ac-yasnippet)
+(add-hook 'c-mode-common-hook 'remove-ac-yasnippet)
+(add-hook 'c++-mode-common-hook 'remove-ac-yasnippet)
 
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
 (add-hook 'c++-mode-common-hook 'my-c-mode-common-hook)
