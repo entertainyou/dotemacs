@@ -38,7 +38,7 @@
 (when (require 'yasnippet nil t)
   (yas/initialize)
   ;; (yas/global-mode t)
-  (yas/load-directory "~/.emacs.d/elpa/yasnippet-20120605/snippets/")
+  (yas/load-directory "/home/weih/.emacs.d/snippets")
   (global-set-key (kbd "M-/") 'yas/expand)
   (define-key yas/keymap (kbd "<S-iso-lefttab>") 'yas/prev-field)
   (setq yas/also-auto-indent-first-line t)
