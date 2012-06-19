@@ -208,9 +208,9 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
 
 (require 'dired-single)
 
-(when (require 'undo-tree nil t)
-  (global-undo-tree-mode)
-  )
+;; (when (require 'undo-tree nil t)
+;;   (global-undo-tree-mode)
+;;   )
 
 (provide 'weih-basic)
 
