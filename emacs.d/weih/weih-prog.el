@@ -46,10 +46,12 @@
 (add-hook 'gtags-select-mode-hook
   '(lambda ()
      ;; (setq hl-line-face 'underline)
-     ;; (hl-line-mode 1)
+     (hl-line-mode 1)
      ;; (lcaol (kbd "<return>") 'gtags-select-tag)
      (define-key gtags-select-mode-map (kbd "<return>") 'gtags-select-tag)
      (define-key gtags-select-mode-map (kbd "RET") 'gtags-select-tag)
+     (define-key gtags-select-mode-map (kbd "n") 'next-line)
+     (define-key gtags-select-mode-map (kbd "p") 'previous-line)
 ))
 
 ;; (add-to-list 'load-path "~/.emacs.d/weih/auto-complete-1.3.1")
