@@ -91,7 +91,10 @@
 (setq mode-compile-reading-time 0)
 
 ;; (wrap-region-global-mode t)
-(require 'magit)
+(when (require 'magit nil t)
+  (global-set-key (kbd "C-c z") 'magit-blame-mode)
+  )
+
 
 ;; (add-to-list 'load-path "~/.emacs.d/weih/mark-multiple.el")
 ;; (require 'inline-string-rectangle)
