@@ -8,22 +8,12 @@
 ;;; packages in your .emacs.
 
 (setq load-path (cons "~/.emacs.d/" load-path))
-(setq load-path (cons "~/.emacs.d/weih/" load-path))
-
-(require 'package)
-(package-initialize)
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
-
-(add-to-list 'package-archives
-             '("ELPA" . "http://tromey.com/elpa"))
-
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+;; (setq load-path (cons "~/.emacs.d/weih/" load-path))
 
 (require 'weih-basic "~/.emacs.d/weih/weih-basic.el")
 (require 'weih-prog "~/.emacs.d/weih/weih-prog.el")
 (require 'weih-mail "~/.emacs.d/weih/weih-mail.el")
+(require 'weih-blog "~/.emacs.d/weih/weih-blog.el")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
