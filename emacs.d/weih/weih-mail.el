@@ -35,4 +35,10 @@
 (define-key notmuch-hello-mode-map (kbd "G") 'self-insert-command)
 
 (setq message-auto-save-directory "~/.emacs.d/Mail/drafts")
+
+(setq mail-host-address "opera.com")
+
+(setq mail-specify-envelope-from t)
+(setq message-sendmail-envelope-from 'header)
+(setq mail-envelope-from 'header)
 (provide 'weih-mail)
