@@ -219,6 +219,8 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
 (require 'ace-jump-mode)
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
+(define-key global-map (kbd "C-c b") 'icicle-bookmark)
+
 (require 'dired-single)
 
 ;; (when (require 'undo-tree nil t)
