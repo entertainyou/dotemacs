@@ -9,7 +9,7 @@
              '("marmalade" . "http://marmalade-repo.org/packages/"))
 
 (add-to-list 'package-archives
-             '("ELPA" . "http://tromey.com/elpa"))
+             '("ELPA" . "http://tromey.com/elpa/"))
 
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
