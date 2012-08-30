@@ -19,8 +19,10 @@
 
 (setq fill-column 80)
 
-(add-to-list 'load-path "/usr/share/emacs/site-lisp")
-(load-theme 'tango-dark t)
+;; (add-to-list 'load-path "/usr/share/emacs/site-lisp")
+(add-to-list 'load-path "~/.emacs.d/weih/")
+;; (load-theme 'tango-dark t)
+(load-theme 'twilight-anti-bright t)
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (menu-bar-mode -1)
@@ -49,12 +51,13 @@
 
 ;; (global-unset-key (kbd "M-/"))
 (when (require 'yasnippet nil t)
-  (yas/initialize)
-  ;; (yas/global-mode t)
+  ;; (yas/initialize)
+  (yas-global-mode t)
   ;; (yas/load-directory "/home/weih/.emacs.d/snippets")
   (global-set-key (kbd "M-/") 'yas/expand)
-  (define-key yas/keymap (kbd "<S-iso-lefttab>") 'yas/prev-field)
-  (setq yas/also-auto-indent-first-line t)
+  (define-key yas-keymap (kbd "<S-iso-lefttab>") 'yas/prev-field)
+  (setq yas-also-auto-indent-first-line t)
+  (require 'auto-yasnippet nil t)
 )
 
 (column-number-mode t)
@@ -227,5 +230,21 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
 ;;   (global-undo-tree-mode)
 ;;   )
 
+(setq minibuffer-prompt-properties (quote (read-only t point-entered minibuffer-avoid-prompt face minibuffer-prompt)))
+
+;; Make subword mode global
+(global-subword-mode t)
+
+;; (set-face-attribute
+;;  'default nil :font "Andale Mono 15")
+
+;; (set-face-attribute
+;;  'default nil :font "Liberation Mono 14")
+
+;; Chinese Font
+(dolist (charset '(kana han symbol cjk-misc bopomofo))
+  (set-fontset-font (frame-parameter nil 'font)
+                    charset
+                    (font-spec :family "WenQuanYi Zen Hei Mono" :size 16)))
 (provide 'weih-basic)
 
