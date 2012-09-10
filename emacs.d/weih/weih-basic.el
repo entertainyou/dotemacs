@@ -243,9 +243,12 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
 ;;  'default nil :font "Liberation Mono 14")
 
 ;; Chinese Font
-(dolist (charset '(kana han symbol cjk-misc bopomofo))
-  (set-fontset-font (frame-parameter nil 'font)
-                    charset
-                    (font-spec :family "WenQuanYi Zen Hei Mono" :size 16)))
+;; (dolist (charset '(kana han symbol cjk-misc bopomofo))
+;;   (set-fontset-font (frame-parameter nil 'font)
+;;                     charset
+;;                     (font-spec :family "WenQuanYi Zen Hei Mono" :size 16)))
+
+(when (require 'guru nil t)
+  (guru-global-mode))
 (provide 'weih-basic)
 
