@@ -250,5 +250,8 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
 
 (when (require 'guru nil t)
   (guru-global-mode))
+
+(require 'awk-it nil t)
+
 (provide 'weih-basic)
 
