@@ -41,4 +41,9 @@
 (setq mail-specify-envelope-from t)
 (setq message-sendmail-envelope-from 'header)
 (setq mail-envelope-from 'header)
+
+(when (require 'bbdb nil t)
+  (define-key message-mode-map (kbd "TAB") 'bbdb-complete-mail))
+
+
 (provide 'weih-mail)
