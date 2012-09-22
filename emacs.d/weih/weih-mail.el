@@ -43,7 +43,7 @@
 (setq mail-envelope-from 'header)
 
 (when (require 'bbdb nil t)
-  (define-key message-mode-map (kbd "TAB") 'bbdb-complete-mail))
-
+  (define-key message-mode-map (kbd "<C-tab>") 'bbdb-complete-mail)
+  (setq bbdb-complete-mail-allow-cycling t))
 
 (provide 'weih-mail)
