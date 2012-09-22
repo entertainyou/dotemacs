@@ -1,4 +1,7 @@
 *~
 *.elc
 elpa/
-.emacs.d/ac-comphist.dat
+emacs.d/ac-comphist.dat
+emacs.d/Mail/
+emacs.d/tramp
+emacs.d/url/
