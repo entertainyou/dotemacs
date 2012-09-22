@@ -24,16 +24,18 @@
 ;; (provide 'weih-mail)
 
 
-(require 'notmuch nil t)
+
 
 (defvar gnus-summary-buffer)
 (defvar gnus-inhibit-images 'nil)
 (if (not (fboundp 'gnus-blocked-images))
     (defun gnus-blocked-images () nil))
 
-(define-key notmuch-hello-mode-map (kbd "g") 'notmuch-hello-poll-and-update)
-(define-key notmuch-hello-mode-map (kbd "G") 'self-insert-command)
-(setq notmuch-search-oldest-first 'nil)
+(when (require 'notmuch nil t)
+  (define-key notmuch-hello-mode-map (kbd "g") 'notmuch-hello-poll-and-update)
+  (define-key notmuch-hello-mode-map (kbd "G") 'self-insert-command)
+  (setq notmuch-search-oldest-first 'nil))
+
 (setq message-auto-save-directory "~/.emacs.d/Mail/drafts")
 
 (setq mail-host-address "opera.com")

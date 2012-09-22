@@ -1,6 +1,6 @@
 ;; HUANG Wei's emacs setting
-;; (setq user-full-name "entertainyou")
-;; (setq user-mail-address "grubbyfans@gmail.com")
+(setq user-full-name "HUANG Wei")
+(setq user-mail-address "weih@opera.com")
 
 
 (require 'package)
