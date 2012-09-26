@@ -253,5 +253,7 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
 
 (require 'awk-it nil t)
 
+(require 'mark-more-like-this nil t)
+
 (provide 'weih-basic)
 
