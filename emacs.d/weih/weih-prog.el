@@ -130,11 +130,6 @@
 (when (require 'slime-autoloads nil t)
   (slime-setup '(slime-fancy)))
 
-(when (require 'expand-region nil t)
-  (global-set-key (kbd "C-=") 'er/expand-region)
-  (global-set-key (kbd "C--") 'er/contract-region)
-)
-
 (define-derived-mode bream-mode java-mode
   "bream mode"
   (setq mode-name "bream")
@@ -150,5 +145,11 @@
 (autoload 'mode-compile-kill "mode-compile"
   "Command to kill a compilation launched by `mode-compile'" t)
 (global-set-key "\C-ck" 'mode-compile-kill)
+
+;; (require 'sgml nil t)
+(when (require 'expand-region nil t)
+  (global-set-key (kbd "C-=") 'er/expand-region)
+  (global-set-key (kbd "C--") 'er/contract-region)
+  )
 
 (provide 'weih-prog)
