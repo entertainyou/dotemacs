@@ -138,6 +138,7 @@
 
 (add-to-list 'auto-mode-alist '("\\.bream\\'" . bream-mode))
 
+(add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
 
 (autoload 'mode-compile "mode-compile"
   "Command to compile current buffer file based on the major mode" t)
@@ -151,5 +152,10 @@
   (global-set-key (kbd "C-=") 'er/expand-region)
   (global-set-key (kbd "C--") 'er/contract-region)
   )
+
+
+;; TODO: remove the PATH.
+(load-file "~/.emacs.d/weih/lyskom-all-0.48.elc")
+;; (load-file "./lyskom-all-0.48.el")
 
 (provide 'weih-prog)
