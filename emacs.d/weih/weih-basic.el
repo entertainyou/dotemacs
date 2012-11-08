@@ -40,6 +40,8 @@
 ;;; highlight matching parenthsis
 (show-paren-mode t)
 
+(setq enable-recursive-minibuffers t)
+
 (global-linum-mode t)
 (setq x-select-enable-clipboard t)
 (setq inhibit-startup-message t)
