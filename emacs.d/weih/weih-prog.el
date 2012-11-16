@@ -26,7 +26,6 @@
   ;; (setq ac-sources (append '(ac-source-gtags) ac-sources))
   )
 
-
 (add-hook 'emacs-lisp-mode-hook 'remove-ac-yasnippet)
 (add-hook 'c-mode-common-hook 'remove-ac-yasnippet)
 (add-hook 'c++-mode-common-hook 'remove-ac-yasnippet)
@@ -157,5 +156,16 @@
 ;; TODO: remove the PATH.
 (load-file "~/.emacs.d/weih/lyskom-all-0.48.elc")
 ;; (load-file "./lyskom-all-0.48.el")
+
+
+(add-hook 'pike-mode-hook
+          (lambda()
+            (local-set-key (kbd "C-c <right>") 'hs-show-block)
+            (local-set-key (kbd "C-c <left>")  'hs-hide-block)
+            (local-set-key (kbd "C-c <up>")    'hs-hide-all)
+            (local-set-key (kbd "C-c <down>")  'hs-show-all)
+            (hs-minor-mode t)))
+
+
 
 (provide 'weih-prog)
