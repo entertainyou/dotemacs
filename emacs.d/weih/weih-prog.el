@@ -154,7 +154,7 @@
 
 
 ;; TODO: remove the PATH.
-(load-file "~/.emacs.d/weih/lyskom-all-0.48.elc")
+;; (load-file "~/.emacs.d/weih/lyskom-all-0.48.elc")
 ;; (load-file "./lyskom-all-0.48.el")
 
 

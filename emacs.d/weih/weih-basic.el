@@ -22,8 +22,8 @@
 ;; (add-to-list 'load-path "/usr/share/emacs/site-lisp")
 (add-to-list 'load-path "~/.emacs.d/weih/")
 ;; (load-theme 'tango-dark t)
-(require 'twilight-theme)
-(load-theme 'twilight-anti-bright t)
+(when (require 'twilight-theme 'nil t)
+  (load-theme 'twilight-anti-bright t))
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (menu-bar-mode -1)
@@ -60,8 +60,7 @@
   (global-set-key (kbd "M-/") 'yas/expand)
   (define-key yas-keymap (kbd "<S-iso-lefttab>") 'yas/prev-field)
   (setq yas-also-auto-indent-first-line t)
-  (require 'auto-yasnippet nil t)
-)
+  (require 'auto-yasnippet nil t))
 
 (column-number-mode t)
 
