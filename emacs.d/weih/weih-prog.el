@@ -7,9 +7,9 @@
 
 (global-font-lock-mode t)
 
-(defun remove-ac-yasnippet()
-  (setq ac-sources (delq 'ac-source-yasnippet ac-sources))
-  )
+;; (defun remove-ac-yasnippet()
+;;   (setq ac-sources (delq 'ac-source-yasnippet ac-sources))
+;;   )
 
 (defun my-c-mode-common-hook()
   ;; (hs-minor-mode t)
@@ -26,9 +26,9 @@
   ;; (setq ac-sources (append '(ac-source-gtags) ac-sources))
   )
 
-(add-hook 'emacs-lisp-mode-hook 'remove-ac-yasnippet)
-(add-hook 'c-mode-common-hook 'remove-ac-yasnippet)
-(add-hook 'c++-mode-common-hook 'remove-ac-yasnippet)
+;; (add-hook 'emacs-lisp-mode-hook 'remove-ac-yasnippet)
+;; (add-hook 'c-mode-common-hook 'remove-ac-yasnippet)
+;; (add-hook 'c++-mode-common-hook 'remove-ac-yasnippet)
 
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
 (add-hook 'c++-mode-common-hook 'my-c-mode-common-hook)
@@ -62,8 +62,7 @@
   (setq ac-ignore-case 'smart)
   (setq ac-sources (append ac-sources '(ac-source-gtags)))
   (setq ac-use-fuzzy t)
-  (global-auto-complete-mode t)
-)
+  (global-auto-complete-mode t))
 
 ;; ;; this conflicts with auto complete, RET to choose current choice.
 ;; (dolist (map (list lisp-mode-map emacs-lisp-mode-map lisp-interaction-mode-map
@@ -125,7 +124,7 @@
 
 ;; (require 'geiser-install)
 
-(setq inferior-lisp-program "/usr/bin/sbcl")
+(setq inferior-lisp-program "/usr/bin/clisp")
 (when (require 'slime-autoloads nil t)
   (slime-setup '(slime-fancy)))
 

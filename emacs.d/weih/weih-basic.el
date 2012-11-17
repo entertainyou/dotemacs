@@ -22,8 +22,10 @@
 ;; (add-to-list 'load-path "/usr/share/emacs/site-lisp")
 (add-to-list 'load-path "~/.emacs.d/weih/")
 ;; (load-theme 'tango-dark t)
-(when (require 'twilight-theme 'nil t)
-  (load-theme 'twilight-anti-bright t))
+;; (when (require 'twilight-anti-bright 'nil t)
+;;   (load-theme 'twilight-anti-bright t))
+
+(load-theme 'twilight-anti-bright t)
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (menu-bar-mode -1)
