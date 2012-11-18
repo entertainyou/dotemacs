@@ -2,6 +2,10 @@
 (setq user-full-name "HUANG Wei")
 (setq user-mail-address "weih@opera.com")
 
+(defvar *require-not-found-message* "[require] %s not present")
+
+(defun require-not-found (package)
+  (message *require-not-found-message* package))
 
 (require 'package)
 (package-initialize)
@@ -55,22 +59,24 @@
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 ;; (global-unset-key (kbd "M-/"))
-(when (require 'yasnippet nil t)
+(if (require 'yasnippet nil t)
   ;; (yas/initialize)
-  (yas-global-mode t)
-  ;; (yas/load-directory "/home/weih/.emacs.d/snippets")
-  (global-set-key (kbd "M-/") 'yas/expand)
-  (define-key yas-keymap (kbd "<S-iso-lefttab>") 'yas/prev-field)
-  (setq yas-also-auto-indent-first-line t)
-  (require 'auto-yasnippet nil t))
+  (progn
+    (yas-global-mode t)
+    ;; (yas/load-directory "/home/weih/.emacs.d/snippets")
+    (global-set-key (kbd "M-/") 'yas/expand)
+    (define-key yas-keymap (kbd "<S-iso-lefttab>") 'yas/prev-field)
+    (setq yas-also-auto-indent-first-line t)
+    (require 'auto-yasnippet nil t))
+  (message *require-not-found-message* 'yasnippet))
 
 (column-number-mode t)
 
 (global-set-key (kbd "C-c f") 'find-grep)
 
-(when (require 'duplicate-thing nil t)
+(if (require 'duplicate-thing nil t)
   (global-set-key (kbd "C-c d") 'duplicate-thing)
-)
+  (message *require-not-found-message* 'duplicate-thing))
 
 (global-set-key (kbd "C-c l") 'goto-line)
 ;; (global-set-key (kbd "C-c m") 'menu-bar-mode)
@@ -81,7 +87,9 @@
 
 (global-set-key [(f2)] 'emacs-lisp-byte-compile)
 
-(require 'highlight-symbol)
+(if (require 'highlight-symbol nil t)
+    nil
+  (message *require-not-found-message* ))
 (global-set-key (kbd "C-c h h") 'highlight-symbol-at-point)
 (global-set-key (kbd "C-c h n") 'highlight-symbol-next)
 (global-set-key (kbd "C-c h p") 'highlight-symbol-prev)
@@ -213,12 +221,13 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
  kept-old-versions 2
  version-control t)       ; use versioned backups
 
-(when (require 'dired-isearch nil t)
-  (define-key dired-mode-map (kbd "C-s") 'dired-isearch-forward)
-  (define-key dired-mode-map (kbd "C-r") 'dired-isearch-backward)
-  (define-key dired-mode-map (kbd "ESC C-s") 'dired-isearch-forward-regexp)
-  (define-key dired-mode-map (kbd "ESC C-r") 'dired-isearch-backward-regexp)
-)
+(if (require 'dired-isearch nil t)
+  (progn
+    (define-key dired-mode-map (kbd "C-s") 'dired-isearch-forward)
+    (define-key dired-mode-map (kbd "C-r") 'dired-isearch-backward)
+    (define-key dired-mode-map (kbd "ESC C-s") 'dired-isearch-forward-regexp)
+    (define-key dired-mode-map (kbd "ESC C-r") 'dired-isearch-backward-regexp))
+  (require-not-found 'dired-isearch))
 
 (require 'drag-stuff)
 (drag-stuff-global-mode)
@@ -251,13 +260,12 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
 ;;                     charset
 ;;                     (font-spec :family "WenQuanYi Zen Hei Mono" :size 16)))
 
-(when (require 'guru nil t)
-  (guru-global-mode))
+;; (when (require 'guru nil t)
+;;   (guru-global-mode))
 
 (require 'awk-it nil t)
 
 (require 'mark-more-like-this nil t)
-
 
 (require 'midnight)
 

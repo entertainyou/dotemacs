@@ -57,12 +57,13 @@
 ;; ;; (load-file "~/.emacs.d/weih/auto-complete-1.3.1/auto-complete-config.el")
 ;; (require 'auto-complete-config "~/.emacs.d/weih/auto-complete-1.3.1/auto-complete-config.el")
 
-(when (require 'auto-complete-config nil t)
-  (ac-config-default)
-  (setq ac-ignore-case 'smart)
-  (setq ac-sources (append ac-sources '(ac-source-gtags)))
-  (setq ac-use-fuzzy t)
-  (global-auto-complete-mode t))
+(if (require 'auto-complete-config nil t)
+  (progn  (ac-config-default)
+          (setq ac-ignore-case 'smart)
+          (setq ac-sources (append ac-sources '(ac-source-gtags)))
+          (setq ac-use-fuzzy t)
+          (global-auto-complete-mode t))
+  (require-not-found 'auto-complete-config))
 
 ;; ;; this conflicts with auto complete, RET to choose current choice.
 ;; (dolist (map (list lisp-mode-map emacs-lisp-mode-map lisp-interaction-mode-map
@@ -89,9 +90,9 @@
 (setq mode-compile-reading-time 0)
 
 ;; (wrap-region-global-mode t)
-(when (require 'magit nil t)
-  (global-set-key (kbd "C-c z") 'magit-blame-mode)
-  )
+(if (require 'magit nil t)
+    (global-set-key (kbd "C-c z") 'magit-blame-mode)
+  (require-not-found 'magit))
 
 
 ;; (add-to-list 'load-path "~/.emacs.d/weih/mark-multiple.el")
@@ -109,10 +110,9 @@
 ;; (require 'js2-rename-var)
 ;; (define-key js2-mode-map (kbd "C-c C-r") 'js2-rename-var)
 
-(when (require 'autopair nil t)
-  (autopair-global-mode)
-)
-
+(if (require 'autopair nil t)
+    (autopair-global-mode)
+  (require-not-found 'autopair))
 
 (add-to-list 'auto-mode-alist '("\\.inc\\'" . c-mode))
 
@@ -124,9 +124,12 @@
 
 ;; (require 'geiser-install)
 
-(setq inferior-lisp-program "/usr/bin/clisp")
-(when (require 'slime-autoloads nil t)
-  (slime-setup '(slime-fancy)))
+;; (setq inferior-lisp-program "/usr/bin/clisp")
+(setq inferior-lisp-program "/usr/bin/sbcl")
+(if (require 'slime-autoloads nil t)
+  ;; (slime-setup '(slime-fancy)))
+    (slime-setup)
+  (require-not-found 'slime-autoloads))
 
 (define-derived-mode bream-mode java-mode
   "bream mode"
@@ -146,25 +149,23 @@
 (global-set-key "\C-ck" 'mode-compile-kill)
 
 ;; (require 'sgml nil t)
-(when (require 'expand-region nil t)
-  (global-set-key (kbd "C-=") 'er/expand-region)
-  (global-set-key (kbd "C--") 'er/contract-region)
-  )
-
+(if (require 'expand-region nil t)
+    (progn
+      (global-set-key (kbd "C-=") 'er/expand-region)
+      (global-set-key (kbd "C--") 'er/contract-region))
+  (require-not-found 'expand-region))
 
 ;; TODO: remove the PATH.
 ;; (load-file "~/.emacs.d/weih/lyskom-all-0.48.elc")
 ;; (load-file "./lyskom-all-0.48.el")
 
 
-(add-hook 'pike-mode-hook
-          (lambda()
-            (local-set-key (kbd "C-c <right>") 'hs-show-block)
-            (local-set-key (kbd "C-c <left>")  'hs-hide-block)
-            (local-set-key (kbd "C-c <up>")    'hs-hide-all)
-            (local-set-key (kbd "C-c <down>")  'hs-show-all)
-            (hs-minor-mode t)))
-
-
+;; (add-hook 'pike-mode-hook
+;;           (lambda()
+;;             (local-set-key (kbd "C-c <right>") 'hs-show-block)
+;;             (local-set-key (kbd "C-c <left>")  'hs-hide-block)
+;;             (local-set-key (kbd "C-c <up>")    'hs-hide-all)
+;;             (local-set-key (kbd "C-c <down>")  'hs-show-all)
+;;             (hs-minor-mode t)))
 
 (provide 'weih-prog)
