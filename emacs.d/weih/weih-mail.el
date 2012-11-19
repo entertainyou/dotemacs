@@ -26,10 +26,10 @@
 
 
 
-;; (defvar gnus-summary-buffer)
-;; (defvar gnus-inhibit-images 'nil)
-;; (if (not (fboundp 'gnus-blocked-images))
-;;     (defun gnus-blocked-images () nil))
+(defvar gnus-summary-buffer)
+(defvar gnus-inhibit-images 'nil)
+(if (not (fboundp 'gnus-blocked-images))
+    (defun gnus-blocked-images () nil))
 
 (if (require 'notmuch nil t)
   (progn
