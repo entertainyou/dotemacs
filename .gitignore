@@ -5,3 +5,5 @@ emacs.d/ac-comphist.dat
 emacs.d/Mail/
 emacs.d/tramp
 emacs.d/url/
+/emacs.d/.mc-lists.el
+/emacs.d/bookmarks

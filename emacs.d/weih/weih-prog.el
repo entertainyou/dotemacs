@@ -99,10 +99,12 @@
 ;; (require 'inline-string-rectangle)
 ;; (global-set-key (kbd "C-x r t") 'inline-string-rectangle)
 
-;; (require 'mark-more-like-this)
-;; (global-set-key (kbd "C-<") 'mark-previous-like-this)
-;; (global-set-key (kbd "C->") 'mark-next-like-this)
-;; (global-set-key (kbd "C-M-m") 'mark-more-like-this) ; like the other two, but takes an argument (negative is previous)
+(if (require 'mark-more-like-this nil t)
+    (progn
+      (global-set-key (kbd "C-<") 'mark-previous-like-this)
+      (global-set-key (kbd "C->") 'mark-next-like-this)
+      (global-set-key (kbd "C-M-m") 'mark-more-like-this))
+  (require-not-found 'mark-more-like-this)) ; like the other two, but takes an argument (negative is previous)
 
 ;; (require 'rename-sgml-tag)
 ;; (define-key sgml-mode-map (kbd "C-c C-r") 'rename-sgml-tag)
