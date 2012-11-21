@@ -23,8 +23,6 @@
 
 (setq fill-column 80)
 
-;; (add-to-list 'load-path "/usr/share/emacs/site-lisp")
-(add-to-list 'load-path "~/.emacs.d/weih/")
 ;; (load-theme 'tango-dark t)
 ;; (when (require 'twilight-anti-bright 'nil t)
 ;;   (load-theme 'twilight-anti-bright t))
