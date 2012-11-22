@@ -91,7 +91,12 @@
 
 ;; (wrap-region-global-mode t)
 (if (require 'magit nil t)
-    (global-set-key (kbd "C-c z") 'magit-blame-mode)
+    (progn
+      (global-set-key (kbd "C-c z") 'magit-blame-mode)
+      (add-hook 'magit-log-edit-mode-hook
+                (lambda ()
+                  (set-fill-column 72)
+                  (auto-fill-mode t))))
   (require-not-found 'magit))
 
 
