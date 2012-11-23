@@ -14,6 +14,7 @@
 (require 'weih-prog nil t)
 (require 'weih-mail nil t)
 (require 'weih-blog nil t)
+(require 'weih-org nil t)
 
 
 (custom-set-variables
