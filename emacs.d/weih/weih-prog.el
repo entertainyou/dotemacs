@@ -99,6 +99,9 @@
                   (auto-fill-mode t))))
   (require-not-found 'magit))
 
+(if (require 'git-commit-mode nil t)
+    nil
+  (require-not-found 'git-commit-mode))
 
 ;; (add-to-list 'load-path "~/.emacs.d/weih/mark-multiple.el")
 ;; (require 'inline-string-rectangle)
