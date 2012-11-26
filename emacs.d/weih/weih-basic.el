@@ -27,13 +27,13 @@
 ;; (when (require 'twilight-anti-bright 'nil t)
 ;;   (load-theme 'twilight-anti-bright t))
 
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'twilight-anti-bright t)
 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (menu-bar-mode -1)
 (tool-bar-mode -1)
-
 (scroll-bar-mode -1)
+
 (setq initial-scratch-message "")
 
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -47,6 +47,7 @@
 (setq enable-recursive-minibuffers t)
 
 (global-linum-mode t)
+
 (setq x-select-enable-clipboard t)
 (setq inhibit-startup-message t)
 (setq kill-ring-max 200)
@@ -66,7 +67,8 @@
     (define-key yas-keymap (kbd "<S-iso-lefttab>") 'yas/prev-field)
     (setq yas-also-auto-indent-first-line t)
     (require 'auto-yasnippet nil t))
-  (message *require-not-found-message* 'yasnippet))
+  (require-not-found 'yasnippet))
+
 
 (column-number-mode t)
 
@@ -74,7 +76,7 @@
 
 (if (require 'duplicate-thing nil t)
   (global-set-key (kbd "C-c d") 'duplicate-thing)
-  (message *require-not-found-message* 'duplicate-thing))
+  (require-not-found 'duplicate-thing))
 
 (global-set-key (kbd "C-c l") 'goto-line)
 ;; (global-set-key (kbd "C-c m") 'menu-bar-mode)
@@ -86,13 +88,13 @@
 (global-set-key [(f2)] 'emacs-lisp-byte-compile)
 
 (if (require 'highlight-symbol nil t)
-    nil
-  (message *require-not-found-message* ))
-(global-set-key (kbd "C-c h h") 'highlight-symbol-at-point)
-(global-set-key (kbd "C-c h n") 'highlight-symbol-next)
-(global-set-key (kbd "C-c h p") 'highlight-symbol-prev)
-(global-set-key (kbd "C-c n") 'highlight-symbol-next)
-(global-set-key (kbd "C-c p") 'highlight-symbol-prev)
+    (progn
+      (global-set-key (kbd "C-c h h") 'highlight-symbol-at-point)
+      (global-set-key (kbd "C-c h n") 'highlight-symbol-next)
+      (global-set-key (kbd "C-c h p") 'highlight-symbol-prev)
+      (global-set-key (kbd "C-c n") 'highlight-symbol-next)
+      (global-set-key (kbd "C-c p") 'highlight-symbol-prev))
+  (require-not-found 'highlight-symbol))
 
 (global-set-key (kbd "C-c v") 'magit-status)
 (global-set-key (kbd "C-c =") 'enlarge-window)
@@ -102,20 +104,26 @@
 
 (global-set-key (kbd "C-x C-j") 'dired-jump)
 
-(require 'icicles)
+(if (require 'icicles)
 ;; (setq icicle-show-Completions-initially-f  t)
-(icy-mode t)
+    (progn
+      (icy-mode t)
+      (define-key global-map (kbd "C-c b") 'icicle-bookmark))
+  (require-not-found 'icicles))
 
-(require 'rainbow-mode)
-(rainbow-mode t)
+(if (require 'rainbow-mode nil t)
+    (rainbow-mode t)
+  (require-not-found 'rainbow-mode))
 
-(require 'iedit)
-(define-key global-map (kbd "C-;") 'iedit-mode)
+(if (require 'iedit)
+    (define-key global-map (kbd "C-;") 'iedit-mode)
+  (require-not-found 'iedit))
 
-(defvar blink-cursor-colors (list  "#92c48f" "#6785c5" "#be369c" "#d9ca65")
+(defvar blink-cursor-colors (list "#92c48f" "#6785c5" "#be369c" "#d9ca65")
   "On each blink the cursor will cycle to the next color in this list.")
 
 (setq blink-cursor-count 0)
+
 (defun blink-cursor-timer-function ()
   "Cyberpunk variant of timer `blink-cursor-timer'. OVERWRITES original version in `frame.el'.
 
@@ -124,10 +132,8 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
     (when (>= blink-cursor-count (length blink-cursor-colors))
       (setq blink-cursor-count 0))
     (set-cursor-color (nth blink-cursor-count blink-cursor-colors))
-    (setq blink-cursor-count (+ 1 blink-cursor-count))
-    )
-  (internal-show-cursor nil (not (internal-show-cursor-p)))
-  )
+    (setq blink-cursor-count (+ 1 blink-cursor-count)))
+  (internal-show-cursor nil (not (internal-show-cursor-p))))
 
 (blink-cursor-mode)
 
@@ -227,15 +233,17 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
     (define-key dired-mode-map (kbd "ESC C-r") 'dired-isearch-backward-regexp))
   (require-not-found 'dired-isearch))
 
-(require 'drag-stuff)
-(drag-stuff-global-mode)
+(if (require 'drag-stuff nil t)
+    (drag-stuff-global-mode)
+  (require-not-found 'drag-stuff))
 
-(require 'ace-jump-mode)
-(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+(if (require 'ace-jump-mode nil t)
+    (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+  (require-not-found 'ace-jump-mode))
 
-(define-key global-map (kbd "C-c b") 'icicle-bookmark)
-
-(require 'dired-single)
+(if (require 'dired-single nil t)
+    nil
+  (require-not-found 'dired-single))
 
 ;; (when (require 'undo-tree nil t)
 ;;   (global-undo-tree-mode)
@@ -261,11 +269,17 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
 ;; (when (require 'guru nil t)
 ;;   (guru-global-mode))
 
-(require 'awk-it nil t)
+(if (require 'awk-it nil t)
+    nil
+  (require-not-found 'awk-it))
 
-(require 'mark-more-like-this nil t)
+(if (require 'mark-more-like-this nil t)
+    nil
+  (require-not-found 'mark-more-like-this))
 
-(require 'midnight)
+(if (require 'midnight nil t)
+    nil
+  (require-not-found 'midnight))
 
 (setq debug-on-error t)
 (provide 'weih-basic)
