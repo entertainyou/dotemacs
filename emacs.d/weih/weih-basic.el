@@ -131,24 +131,24 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
 
 (blink-cursor-mode)
 
-(defun echo-full-path (arg)
+(defun echo-file-name (output-to-buffer)
   "Echo buffer's full-path"
-  (interactive "p")
-  (message buffer-file-name)
-  )
+  (interactive "P")
+  (let ((standard-output (if output-to-buffer (current-buffer) t)))
+    (prin1 buffer-file-name)
+    nil))
 
-(global-set-key (kbd "C-c e") 'echo-full-path)
+(global-set-key (kbd "C-c e") 'echo-file-name)
 
 (setq-default indent-tabs-mode nil)
 
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 
-
 ;; handle "same name" buffers
 (require 'uniquify)
 ;; (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
-(setq uniquify-buffer-name-style 'forward)
+(setq uniquify-buffer-name-style 'post-forward)
 
 ;; ignore case when reading a file name
 (setq read-file-name-completion-ignore-case t)
