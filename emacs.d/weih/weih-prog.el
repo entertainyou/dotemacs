@@ -144,8 +144,7 @@
 (define-derived-mode bream-mode java-mode
   "bream mode"
   (setq mode-name "bream")
-  ;; (font-lock-add-keywords 'bream-mode '(("\\<modifies\\>" . 'font-lock-warning-face)))
-  )
+  (font-lock-add-keywords 'bream-mode '(("\\<modifies\\>" . 'font-lock-warning-face))))
 
 (add-to-list 'auto-mode-alist '("\\.bream\\'" . bream-mode))
 
