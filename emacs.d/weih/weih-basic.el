@@ -278,5 +278,8 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
   (require-not-found 'midnight))
 
 (setq debug-on-error t)
+
+(icomplete-mode t)
+
 (provide 'weih-basic)
 
