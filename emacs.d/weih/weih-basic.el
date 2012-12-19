@@ -281,5 +281,6 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
 
 (icomplete-mode t)
 
+(global-rainbow-delimiters-mode)
 (provide 'weih-basic)
 
