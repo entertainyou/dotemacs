@@ -21,6 +21,7 @@
   (c-set-style "awk")
   (c-set-offset 'inline-open 0)
   (hide-ifdef-mode)
+  (flyspell-prog-mode)
   ;; (rainbow-delimiters-mode)
   ;; (textmate-mode)
   ;; (setq ac-sources (append '(ac-source-gtags) ac-sources))
@@ -38,9 +39,16 @@
   (setq indent-tabs-mode nil)
   (setq show-trailing-whitespace t)
   (setq c-basic-offset 4)
+  (flyspell-prog-mode)
   (c-set-offset 'substatement-open 0))
 
 (add-hook 'java-mode-hook 'my-java-hook)
+
+(defun my-lisp-hook ()
+  (flyspell-prog-mode))
+
+(add-hook 'lisp-mode-hook 'my-lisp-hook)
+(add-hook 'emacs-lisp-mode-hook 'my-lisp-hook)
 
 (add-hook 'gtags-select-mode-hook
   '(lambda ()

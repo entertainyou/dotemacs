@@ -291,4 +291,6 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
 (global-set-key (kbd "M-Z") 'zap-to-char)
 
 (winner-mode t)
+(add-hook 'text-mode-hook (lambda () (flyspell-mode t)))
+
 (provide 'weih-basic)
