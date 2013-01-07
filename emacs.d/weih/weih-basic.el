@@ -84,6 +84,7 @@
 (global-set-key (kbd "C-c o") 'occur)
 (global-set-key (kbd "C-c q") 'query-replace-regexp)
 (global-set-key (kbd "C-c r") 'replace-regexp)
+(global-set-key (kbd "C-c w") 'delete-trailing-whitespace)
 
 (global-set-key [(f2)] 'emacs-lisp-byte-compile)
 
