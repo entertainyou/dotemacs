@@ -105,12 +105,12 @@
 
 (global-set-key (kbd "C-x C-j") 'dired-jump)
 
-;; (if (require 'icicles)
-;; ;; (setq icicle-show-Completions-initially-f  t)
-;;     (progn
-;;       (icy-mode t)
-;;       (define-key global-map (kbd "C-c b") 'icicle-bookmark))
-;;   (require-not-found 'icicles))
+(if (require 'icicles)
+;; (setq icicle-show-Completions-initially-f  t)
+    (progn
+      (icy-mode t)
+      (define-key global-map (kbd "C-c b") 'icicle-bookmark))
+  (require-not-found 'icicles))
 
 (if (require 'rainbow-mode nil t)
     (rainbow-mode t)
@@ -280,7 +280,7 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
 
 (setq debug-on-error t)
 
-(icomplete-mode t)
+;; (icomplete-mode t)
 
 (global-rainbow-delimiters-mode)
 
