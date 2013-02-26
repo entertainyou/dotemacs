@@ -300,4 +300,10 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
                   (interactive)
                   (join-line -1)))
 
+;; (set-default-font "Liberation Mono-13")
+
+;; (setq window-system-default-frame-alist
+;;       '((x (font "Liberation Mono 14"))))
+
+(add-to-list 'default-frame-alist '(font . "Liberation Mono-13"))
 (provide 'weih-basic)
