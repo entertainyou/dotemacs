@@ -128,13 +128,13 @@
 ;; (require 'js2-rename-var)
 ;; (define-key js2-mode-map (kbd "C-c C-r") 'js2-rename-var)
 
-;; (if (require 'autopair nil t)
-;;     (autopair-global-mode)
-;;   (require-not-found 'autopair))
+(if (require 'autopair nil t)
+    (autopair-global-mode)
+  (require-not-found 'autopair))
 
-(if (require 'smartparens nil t)
-    (smartparens-global-mode t)
-  (require-not-found 'smartparens))
+;; (if (require 'smartparens nil t)
+;;     (smartparens-global-mode t)
+;;   (require-not-found 'smartparens))
 
 (add-to-list 'auto-mode-alist '("\\.inc\\'" . c-mode))
 
