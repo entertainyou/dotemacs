@@ -1,6 +1,6 @@
 (require 'cc-mode)
 
-(require 'gtags)
+(require 'gtags nil t)
 (autoload 'gtags-mode "gtags" "" t)
 
 (setq gtags-select-buffer-single t)
