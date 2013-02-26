@@ -188,5 +188,31 @@
 ;;             (local-set-key (kbd "C-c <up>")    'hs-hide-all)
 ;;             (local-set-key (kbd "C-c <down>")  'hs-show-all)
 ;;             (hs-minor-mode t)))
+(require 'google-c-style)
+(add-hook 'c-mode-common-hook 'google-set-c-style)
+
+
+(c-add-style "WebKit" '("Google"
+                        (c-basic-offset . 4)
+                        (c-offsets-alist . ((innamespace . 0)
+                                            (access-label . -)
+                                            (case-label . 0)
+                                            (member-init-intro . +)
+                                            (topmost-intro . 0)))))
+
+
+
+(dir-locals-set-class-variables
+ 'opera-src
+ '((c-mode . ((c-file-style . "Google")))
+   (c++-mode . ((c-file-style . "Google")))))
+(dir-locals-set-class-variables
+ 'webkit-src
+ '((c-mode . ((c-file-style . "WebKit")))
+   (c++-mode . ((c-file-style . "WebKit")))))
+
+(dir-locals-set-directory-class "~/work/" 'opera-src)
+(dir-locals-set-directory-class
+ "~/work/chromium/src/third_party/WebKit/" 'webkit-src)
 
 (provide 'weih-prog)
