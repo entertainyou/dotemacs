@@ -306,4 +306,11 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
 ;;       '((x (font "Liberation Mono 14"))))
 
 (add-to-list 'default-frame-alist '(font . "Liberation Mono-13"))
+
+(if (require 'keyfreq nil t)
+    (progn
+     (keyfreq-mode t)
+     (keyfreq-autosave-mode t))
+    (require-not-found 'keyfreq))
+
 (provide 'weih-basic)
