@@ -35,6 +35,8 @@
   (progn
     (define-key notmuch-hello-mode-map (kbd "g") 'notmuch-hello-poll-and-update)
     (define-key notmuch-hello-mode-map (kbd "G") 'self-insert-command)
+    (define-key notmuch-hello-mode-map (kbd "n") 'widget-forward)
+    (define-key notmuch-hello-mode-map (kbd "p") 'widget-backward)
     (setq notmuch-search-oldest-first 'nil))
   (require-not-found 'notmuch))
 
