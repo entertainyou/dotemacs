@@ -143,6 +143,7 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
   (interactive "P")
   (let ((standard-output (if output-to-buffer (current-buffer) t)))
     (prin1 buffer-file-name)
+    (kill-new buffer-file-name)
     nil))
 
 (global-set-key (kbd "C-c e") 'echo-file-name)
