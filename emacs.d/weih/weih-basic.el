@@ -73,6 +73,7 @@
 (column-number-mode t)
 
 (global-set-key (kbd "C-c f") 'find-grep)
+(global-set-key (kbd "C-c j") 'list-packages)
 
 (if (require 'duplicate-thing nil t)
   (global-set-key (kbd "C-c d") 'duplicate-thing)
