@@ -69,6 +69,7 @@
 
 (try-require 'auto-complete-config
 	     (ac-config-default)
+             (ac-flyspell-workaround)
 	     (setq ac-ignore-case 'smart)
 	     (setq ac-sources (append ac-sources '(ac-source-gtags)))
 	     (setq ac-use-fuzzy t)
