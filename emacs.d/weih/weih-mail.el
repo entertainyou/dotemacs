@@ -25,20 +25,18 @@
 
 
 
-
+(require 'weih-common)
 (defvar gnus-summary-buffer)
 (defvar gnus-inhibit-images 'nil)
 (if (not (fboundp 'gnus-blocked-images))
     (defun gnus-blocked-images () nil))
 
-(if (require 'notmuch nil t)
-  (progn
-    (define-key notmuch-hello-mode-map (kbd "g") 'notmuch-hello-poll-and-update)
-    (define-key notmuch-hello-mode-map (kbd "G") 'self-insert-command)
-    (define-key notmuch-hello-mode-map (kbd "n") 'widget-forward)
-    (define-key notmuch-hello-mode-map (kbd "p") 'widget-backward)
-    (setq notmuch-search-oldest-first 'nil))
-  (require-not-found 'notmuch))
+(try-require 'notmuch
+	     (define-key notmuch-hello-mode-map (kbd "g") 'notmuch-hello-poll-and-update)
+	     (define-key notmuch-hello-mode-map (kbd "G") 'self-insert-command)
+	     (define-key notmuch-hello-mode-map (kbd "n") 'widget-forward)
+	     (define-key notmuch-hello-mode-map (kbd "p") 'widget-backward)
+	     (setq notmuch-search-oldest-first 'nil))
 
 (setq message-auto-save-directory "~/.emacs.d/Mail/drafts")
 
@@ -48,10 +46,8 @@
 (setq message-sendmail-envelope-from 'header)
 (setq mail-envelope-from 'header)
 
-(if (require 'bbdb nil t)
-    (progn
-      (define-key message-mode-map (kbd "<C-tab>") 'bbdb-complete-mail)
-      (setq bbdb-complete-mail-allow-cycling t))
-  (require-not-found 'bbdb))
+(try-require 'bbdb
+	     (define-key message-mode-map (kbd "<C-tab>") 'bbdb-complete-mail)
+	     (setq bbdb-complete-mail-allow-cycling t))
 
 (provide 'weih-mail)

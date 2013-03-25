@@ -1,6 +1,8 @@
+(require 'weih-common)
+
 (require 'cc-mode)
 
-(require 'gtags nil t)
+(try-require 'gtags)
 (autoload 'gtags-mode "gtags" "" t)
 
 (setq gtags-select-buffer-single t)
@@ -65,13 +67,12 @@
 ;; ;; (load-file "~/.emacs.d/weih/auto-complete-1.3.1/auto-complete-config.el")
 ;; (require 'auto-complete-config "~/.emacs.d/weih/auto-complete-1.3.1/auto-complete-config.el")
 
-(if (require 'auto-complete-config nil t)
-  (progn  (ac-config-default)
-          (setq ac-ignore-case 'smart)
-          (setq ac-sources (append ac-sources '(ac-source-gtags)))
-          (setq ac-use-fuzzy t)
-          (global-auto-complete-mode t))
-  (require-not-found 'auto-complete-config))
+(try-require 'auto-complete-config
+	     (ac-config-default)
+	     (setq ac-ignore-case 'smart)
+	     (setq ac-sources (append ac-sources '(ac-source-gtags)))
+	     (setq ac-use-fuzzy t)
+	     (global-auto-complete-mode t))
 
 ;; ;; this conflicts with auto complete, RET to choose current choice.
 ;; (dolist (map (list lisp-mode-map emacs-lisp-mode-map lisp-interaction-mode-map
@@ -98,29 +99,23 @@
 (setq mode-compile-reading-time 0)
 
 ;; (wrap-region-global-mode t)
-(if (require 'magit nil t)
-    (progn
-      (global-set-key (kbd "C-c z") 'magit-blame-mode)
-      (add-hook 'magit-log-edit-mode-hook
-                (lambda ()
-                  (set-fill-column 72)
-                  (auto-fill-mode t))))
-  (require-not-found 'magit))
+(try-require 'magit
+	     (global-set-key (kbd "C-c z") 'magit-blame-mode)
+	     (add-hook 'magit-log-edit-mode-hook
+		       (lambda ()
+			 (set-fill-column 72)
+			 (auto-fill-mode t))))
 
-(if (require 'git-commit-mode nil t)
-    nil
-  (require-not-found 'git-commit-mode))
+(try-require 'git-commit-mode)
 
 ;; (add-to-list 'load-path "~/.emacs.d/weih/mark-multiple.el")
 ;; (require 'inline-string-rectangle)
 ;; (global-set-key (kbd "C-x r t") 'inline-string-rectangle)
 
-(if (require 'mark-more-like-this nil t)
-    (progn
-      (global-set-key (kbd "C-<") 'mark-previous-like-this)
-      (global-set-key (kbd "C->") 'mark-next-like-this)
-      (global-set-key (kbd "C-M-m") 'mark-more-like-this))
-  (require-not-found 'mark-more-like-this)) ; like the other two, but takes an argument (negative is previous)
+(try-require 'mark-more-like-this
+	     (global-set-key (kbd "C-<") 'mark-previous-like-this)
+	     (global-set-key (kbd "C->") 'mark-next-like-this)
+	     (global-set-key (kbd "C-M-m") 'mark-more-like-this))
 
 ;; (require 'rename-sgml-tag)
 ;; (define-key sgml-mode-map (kbd "C-c C-r") 'rename-sgml-tag)
@@ -128,9 +123,8 @@
 ;; (require 'js2-rename-var)
 ;; (define-key js2-mode-map (kbd "C-c C-r") 'js2-rename-var)
 
-(if (require 'autopair nil t)
-    (autopair-global-mode)
-  (require-not-found 'autopair))
+(try-require 'autopair
+	     (autopair-global-mode))
 
 ;; (if (require 'smartparens nil t)
 ;;     (smartparens-global-mode t)
@@ -148,10 +142,8 @@
 
 ;; (setq inferior-lisp-program "/usr/bin/clisp")
 (setq inferior-lisp-program "/usr/bin/sbcl")
-(if (require 'slime-autoloads nil t)
-  ;; (slime-setup '(slime-fancy)))
-    (slime-setup)
-  (require-not-found 'slime-autoloads))
+(try-require 'slime-autoloads
+	     (slime-setup))
 
 (define-derived-mode bream-mode java-mode
   "bream mode"
@@ -170,11 +162,9 @@
 (global-set-key "\C-ck" 'mode-compile-kill)
 
 ;; (require 'sgml nil t)
-(if (require 'expand-region nil t)
-    (progn
-      (global-set-key (kbd "C-=") 'er/expand-region)
-      (global-set-key (kbd "C--") 'er/contract-region))
-  (require-not-found 'expand-region))
+(try-require 'expand-region
+	     (global-set-key (kbd "C-=") 'er/expand-region)
+	     (global-set-key (kbd "C--") 'er/contract-region))
 
 ;; TODO: remove the PATH.
 ;; (load-file "~/.emacs.d/weih/lyskom-all-0.48.elc")

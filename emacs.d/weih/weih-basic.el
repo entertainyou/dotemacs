@@ -73,8 +73,7 @@
 (global-set-key (kbd "C-c j") 'list-packages)
 
 (try-require 'duplicate-thing
-  (global-set-key (kbd "C-c d") 'duplicate-thing)
-  (require-not-found 'duplicate-thing))
+	     (global-set-key (kbd "C-c d") 'duplicate-thing))
 
 (global-set-key (kbd "C-c l") 'goto-line)
 ;; (global-set-key (kbd "C-c m") 'menu-bar-mode)
