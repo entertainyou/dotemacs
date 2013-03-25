@@ -1,11 +1,13 @@
 ;; HUANG Wei's emacs setting
+
+(require 'weih-common)
 (setq user-full-name "HUANG Wei")
 (setq user-mail-address "weih@opera.com")
 
-(defvar *require-not-found-message* "[require] %s not present")
+;; (defvar *require-not-found-message* "[require] %s not present")
 
-(defun require-not-found (package)
-  (message *require-not-found-message* package))
+;; (defun require-not-found (package)
+;;   (message *require-not-found-message* package))
 
 (require 'package)
 (package-initialize)
@@ -57,25 +59,20 @@
 
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
-;; (global-unset-key (kbd "M-/"))
-(if (require 'yasnippet nil t)
-  ;; (yas/initialize)
-  (progn
-    (yas-global-mode t)
-    ;; (yas/load-directory "/home/weih/.emacs.d/snippets")
-    (global-set-key (kbd "M-/") 'yas/expand)
-    (define-key yas-keymap (kbd "<S-iso-lefttab>") 'yas/prev-field)
-    (setq yas-also-auto-indent-first-line t)
-    (require 'auto-yasnippet nil t))
-  (require-not-found 'yasnippet))
-
+(try-require 'yasnippet
+             (yas-global-mode t)
+             ;; (yas/load-directory "/home/weih/.emacs.d/snippets")
+             (global-set-key (kbd "M-/") 'yas/expand)
+             (define-key yas-keymap (kbd "<S-iso-lefttab>") 'yas/prev-field)
+             (setq yas-also-auto-indent-first-line t)
+             (try-require 'auto-yasnippet))
 
 (column-number-mode t)
 
 (global-set-key (kbd "C-c f") 'find-grep)
 (global-set-key (kbd "C-c j") 'list-packages)
 
-(if (require 'duplicate-thing nil t)
+(try-require 'duplicate-thing
   (global-set-key (kbd "C-c d") 'duplicate-thing)
   (require-not-found 'duplicate-thing))
 
@@ -89,14 +86,12 @@
 
 (global-set-key [(f2)] 'emacs-lisp-byte-compile)
 
-(if (require 'highlight-symbol nil t)
-    (progn
-      (global-set-key (kbd "C-c h h") 'highlight-symbol-at-point)
-      (global-set-key (kbd "C-c h n") 'highlight-symbol-next)
-      (global-set-key (kbd "C-c h p") 'highlight-symbol-prev)
-      (global-set-key (kbd "C-c n") 'highlight-symbol-next)
-      (global-set-key (kbd "C-c p") 'highlight-symbol-prev))
-  (require-not-found 'highlight-symbol))
+(try-require 'highlight-symbol
+             (global-set-key (kbd "C-c h h") 'highlight-symbol-at-point)
+             (global-set-key (kbd "C-c h n") 'highlight-symbol-next)
+             (global-set-key (kbd "C-c h p") 'highlight-symbol-prev)
+             (global-set-key (kbd "C-c n") 'highlight-symbol-next)
+             (global-set-key (kbd "C-c p") 'highlight-symbol-prev))
 
 (global-set-key (kbd "C-c v") 'magit-status)
 (global-set-key (kbd "C-c =") 'enlarge-window)
@@ -106,20 +101,15 @@
 
 (global-set-key (kbd "C-x C-j") 'dired-jump)
 
-(if (require 'icicles)
-;; (setq icicle-show-Completions-initially-f  t)
-    (progn
-      (icy-mode t)
-      (define-key global-map (kbd "C-c b") 'icicle-bookmark))
-  (require-not-found 'icicles))
+(try-require 'icicles
+             (icy-mode t)
+             (define-key global-map (kbd "C-c b") 'icicle-bookmark))
 
-(if (require 'rainbow-mode nil t)
-    (rainbow-mode t)
-  (require-not-found 'rainbow-mode))
+(try-require 'rainbow-mode
+             (rainbow-mode t))
 
-(if (require 'iedit)
-    (define-key global-map (kbd "C-;") 'iedit-mode)
-  (require-not-found 'iedit))
+(try-require 'iedit
+             (define-key global-map (kbd "C-;") 'iedit-mode))
 
 (defvar blink-cursor-colors (list "#92c48f" "#6785c5" "#be369c" "#d9ca65")
   "On each blink the cursor will cycle to the next color in this list.")
@@ -155,9 +145,8 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
   (windmove-default-keybindings))
 
 ;; handle "same name" buffers
-(require 'uniquify)
-;; (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
-(setq uniquify-buffer-name-style 'post-forward)
+(try-require 'uniquify
+             (setq uniquify-buffer-name-style 'post-forward))
 
 ;; ignore case when reading a file name
 (setq read-file-name-completion-ignore-case t)
@@ -216,9 +205,6 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
 
 (remove-hook 'find-file-hooks 'vc-find-file-hook)
 
-;; load generic modes which support e.g. batch files
-(require 'generic-x)
-
 (setq
  backup-by-copying t      ; don't clobber symlinks
  backup-directory-alist
@@ -229,25 +215,18 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
  version-control t
  auto-save-file-name-transforms '((".*" "~/.saves/\\1" t)))       ; use versioned backups
 
-(if (require 'dired-isearch nil t)
-  (progn
-    (define-key dired-mode-map (kbd "C-s") 'dired-isearch-forward)
-    (define-key dired-mode-map (kbd "C-r") 'dired-isearch-backward)
-    (define-key dired-mode-map (kbd "ESC C-s") 'dired-isearch-forward-regexp)
-    (define-key dired-mode-map (kbd "ESC C-r") 'dired-isearch-backward-regexp))
-  (require-not-found 'dired-isearch))
+(try-require 'dired-isearch
+             (define-key dired-mode-map (kbd "C-s") 'dired-isearch-forward)
+             (define-key dired-mode-map (kbd "C-r") 'dired-isearch-backward)
+             (define-key dired-mode-map (kbd "ESC C-s") 'dired-isearch-forward-regexp)
+             (define-key dired-mode-map (kbd "ESC C-r") 'dired-isearch-backward-regexp))
 
-(if (require 'drag-stuff nil t)
-    (drag-stuff-global-mode)
-  (require-not-found 'drag-stuff))
+(try-require 'drag-stuff
+    (drag-stuff-global-mode))
 
-(if (require 'ace-jump-mode nil t)
-    (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
-  (require-not-found 'ace-jump-mode))
+(try-require 'ace-jump-mode
+    (define-key global-map (kbd "C-c SPC") 'ace-jump-mode))
 
-(if (require 'dired-single nil t)
-    nil
-  (require-not-found 'dired-single))
 
 ;; (when (require 'undo-tree nil t)
 ;;   (global-undo-tree-mode)
@@ -273,13 +252,10 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
 ;; (when (require 'guru nil t)
 ;;   (guru-global-mode))
 
-(if (require 'awk-it nil t)
-    nil
-  (require-not-found 'awk-it))
+;; load generic modes which support e.g. batch files
+;; (require 'generic-x)
 
-(if (require 'midnight nil t)
-    nil
-  (require-not-found 'midnight))
+(mapcar (lambda (package) (try-require package)) '(dired-single awk-it midnight generic-x))
 
 (setq debug-on-error t)
 
@@ -296,8 +272,6 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
 (winner-mode t)
 (add-hook 'text-mode-hook (lambda () (flyspell-mode t)))
 
-
-
 (global-set-key (kbd "M-j")
                 (lambda ()
                   (interactive)
@@ -310,10 +284,8 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
 
 (add-to-list 'default-frame-alist '(font . "Liberation Mono-13"))
 
-(if (require 'keyfreq nil t)
-    (progn
-     (keyfreq-mode t)
-     (keyfreq-autosave-mode t))
-    (require-not-found 'keyfreq))
+(try-require 'keyfreq
+             (keyfreq-mode t)
+             (keyfreq-autosave-mode t))
 
 (provide 'weih-basic)
