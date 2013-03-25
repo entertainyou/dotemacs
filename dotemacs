@@ -10,12 +10,15 @@
 ;; (setq load-path (cons "~/.emacs.d/" load-path))
 (setq load-path (cons "~/.emacs.d/weih/" load-path))
 
-(require 'weih-basic nil t)
-(require 'weih-prog nil t)
-(require 'weih-mail nil t)
-(require 'weih-blog nil t)
-(require 'weih-org nil t)
-(require 'weih-bts nil t)
+(require 'weih-common)
+
+(mapcar (lambda (package) (try-require package)) '(weih-basic weih-prog weih-mail weih-prog weih-org))
+; (require 'weih-basic nil t)
+; (require 'weih-prog nil t)
+; (require 'weih-mail nil t)
+; (require 'weih-blog nil t)
+; (require 'weih-org nil t)
+; (require 'weih-bts nil t)
 
 
 (custom-set-variables
