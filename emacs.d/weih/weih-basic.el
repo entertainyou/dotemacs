@@ -287,4 +287,13 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
              (keyfreq-mode t)
              (keyfreq-autosave-mode t))
 
+(defun smart-open-line ()
+  "Insert an empty line after the current line.
+Position the cursor at its beginning, according to the current mode."
+  (interactive)
+  (move-end-of-line nil)
+  (newline-and-indent))
+
+(global-set-key [(shift return)] 'smart-open-line)
+
 (provide 'weih-basic)
