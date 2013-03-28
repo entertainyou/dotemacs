@@ -16,7 +16,7 @@
 (defun my-c-mode-common-hook()
   ;; (hs-minor-mode t)
   (subword-mode t)
-  (which-function-mode t)
+  ;; (which-function-mode t)
   ;; (paredit-mode t)
   ;; (gtags-mode t)
   (setq show-trailing-whitespace t)
