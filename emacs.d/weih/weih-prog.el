@@ -2,10 +2,9 @@
 
 (require 'cc-mode)
 
-(try-require 'gtags)
-(autoload 'gtags-mode "gtags" "" t)
-
-(setq gtags-select-buffer-single t)
+(try-require 'gtags
+             (autoload 'gtags-mode "gtags" "" t)
+             (setq gtags-select-buffer-single t))
 
 (global-font-lock-mode t)
 
@@ -26,7 +25,7 @@
   (flyspell-prog-mode)
   ;; (rainbow-delimiters-mode)
   ;; (textmate-mode)
-  ;; (setq ac-sources (append '(ac-source-gtags) ac-sources))
+  ;; (setq ac-sources (delq 'ac-source-gtags ac-sources))
   )
 
 ;; (add-hook 'emacs-lisp-mode-hook 'remove-ac-yasnippet)
@@ -42,6 +41,7 @@
   (setq show-trailing-whitespace t)
   (setq c-basic-offset 4)
   (flyspell-prog-mode)
+  ;; (setq ac-sources (delq 'ac-source-gtags ac-sources))
   (c-set-offset 'substatement-open 0))
 
 (add-hook 'java-mode-hook 'my-java-hook)
@@ -71,7 +71,7 @@
 	     (ac-config-default)
              (ac-flyspell-workaround)
 	     (setq ac-ignore-case 'smart)
-	     (setq ac-sources (append ac-sources '(ac-source-gtags)))
+	     ;; (setq ac-sources (append ac-sources '(ac-source-gtags)))
 	     (setq ac-use-fuzzy t)
 	     (global-auto-complete-mode t))
 
