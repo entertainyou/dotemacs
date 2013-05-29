@@ -40,6 +40,7 @@
   (setq indent-tabs-mode nil)
   (setq show-trailing-whitespace t)
   (setq c-basic-offset 4)
+  (c-set-offset 'case-label '+)
   (flyspell-prog-mode)
   ;; (setq ac-sources (delq 'ac-source-gtags ac-sources))
   (c-set-offset 'substatement-open 0))
@@ -205,5 +206,24 @@
 (dir-locals-set-directory-class "~/work/" 'opera-src)
 (dir-locals-set-directory-class
  "~/work/chromium/src/third_party/WebKit/" 'webkit-src)
+
+(defmacro project-specifics (name &rest body)
+  (declare (indent 1))
+  `(progn
+     (add-hook 'find-file-hook
+               (lambda ()
+                 (when (string-match-p ,name (buffer-file-name))
+                   ,@body)))
+     (add-hook 'dired-after-readin-hook
+               (lambda ()
+                 (when (string-match-p ,name (dired-current-directory))
+                   ,@body)))))
+
+;; (project-specifics "projects/zombietdd"
+;;                    (set (make-local-variable 'slime-js-target-url) "http://localhost:3000/")
+;;                    (ffip-local-patterns "*.js" "*.jade" "*.css" "*.json" "*.md"))
+
+(project-specifics "work/mobile"
+                   (setq compile-command "make -C ~/work/mobile/android -j 16 all PRODUCT=oupeng ANDROID_GOMA_WRAPPER=/usr/bin/ccache"))
 
 (provide 'weih-prog)
