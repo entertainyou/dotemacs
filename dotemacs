@@ -26,12 +26,21 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector ["#3f3f3f" "#cc9393" "#7f9f7f" "#f0dfaf" "#8cd0d3" "#dc8cc3" "#93e0e3" "#dcdccc"])
+ '(ansi-term-color-vector [unspecified "#14191f" "#d15120" "#81af34" "#deae3e" "#7e9fc9" "#a878b5" "#7e9fc9" "#dcdddd"])
  '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
- '(custom-safe-themes (quote ("924fcdd7461cfad9c2188a435b0d8894cd91e8ebe4e235f250c737c585bc9f3d" "71efabb175ea1cf5c9768f10dad62bb2606f41d110152f4ace675325d28df8bd" "159bb8f86836ea30261ece64ac695dc490e871d57107016c09f286146f0dae64" "fca8ce385e5424064320d2790297f735ecfde494674193b061b9ac371526d059" "211bb9b24001d066a646809727efb9c9a2665c270c753aa125bace5e899cb523" "8281168b824a806489ca7d22e60bb15020bf6eecd64c25088c85b3fd806fc341" "36afe64261e1de73fcfadedf154e4bc2c9ec1969bde0c21798d31366897bc4d2" "30fe7e72186c728bd7c3e1b8d67bc10b846119c45a0f35c972ed427c45bacc19" "6cfe5b2f818c7b52723f3e121d1157cf9d95ed8923dbc1b47f392da80ef7495d" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "7cced48b557e24937f437e59c7f6a6cea5ace4e603377beb5067d0b2c27b4b7d" default)))
+ '(custom-safe-themes (quote ("5e1d1564b6a2435a2054aa345e81c89539a72c4cad8536cfe02583e0b7d5e2fa" "4dacec7215677e4a258e4529fac06e0231f7cdd54e981d013d0d0ae0af63b0c8" "75d4ccc5e912b93f722e57cca3ca1a15e079032cd69fd9bc67268b4c85639663" "281e88e0dfab4980a157331b368fb2e5eba315c38f38099d2d9153980a8047ba" "924fcdd7461cfad9c2188a435b0d8894cd91e8ebe4e235f250c737c585bc9f3d" "71efabb175ea1cf5c9768f10dad62bb2606f41d110152f4ace675325d28df8bd" "159bb8f86836ea30261ece64ac695dc490e871d57107016c09f286146f0dae64" "fca8ce385e5424064320d2790297f735ecfde494674193b061b9ac371526d059" "211bb9b24001d066a646809727efb9c9a2665c270c753aa125bace5e899cb523" "8281168b824a806489ca7d22e60bb15020bf6eecd64c25088c85b3fd806fc341" "36afe64261e1de73fcfadedf154e4bc2c9ec1969bde0c21798d31366897bc4d2" "30fe7e72186c728bd7c3e1b8d67bc10b846119c45a0f35c972ed427c45bacc19" "6cfe5b2f818c7b52723f3e121d1157cf9d95ed8923dbc1b47f392da80ef7495d" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "7cced48b557e24937f437e59c7f6a6cea5ace4e603377beb5067d0b2c27b4b7d" default)))
+ '(fci-rule-character-color "#192028")
+ '(fci-rule-color "#383838")
+ '(findbugs-home "~/work/chromium/src/third_party/findbugs")
+ '(findbugs-java-home "/opt/java6/bin/java")
  '(safe-local-variable-values (quote ((eval when (and (buffer-file-name) (file-regular-p (buffer-file-name)) (string-match-p "^[^.]" (buffer-file-name))) (conf-windows-mode)))))
  '(send-mail-function (quote smtpmail-send-it))
  '(smtpmail-smtp-server "smtp.opera.com")
- '(smtpmail-smtp-service 587))
+ '(smtpmail-smtp-service 587)
+ '(vc-annotate-background "#2b2b2b")
+ '(vc-annotate-color-map (quote ((20 . "#bc8383") (40 . "#cc9393") (60 . "#dfaf8f") (80 . "#d0bf8f") (100 . "#e0cf9f") (120 . "#f0dfaf") (140 . "#5f7f5f") (160 . "#7f9f7f") (180 . "#8fb28f") (200 . "#9fc59f") (220 . "#afd8af") (240 . "#bfebbf") (260 . "#93e0e3") (280 . "#6ca0a3") (300 . "#7cb8bb") (320 . "#8cd0d3") (340 . "#94bff3") (360 . "#dc8cc3"))))
+ '(vc-annotate-very-old-color "#dc8cc3"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
