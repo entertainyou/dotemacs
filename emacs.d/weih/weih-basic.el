@@ -298,4 +298,6 @@ Position the cursor at its beginning, according to the current mode."
 
 (global-set-key [(shift return)] 'smart-open-line)
 
+(try-require 'ace-jump-buffer
+             (global-set-key (kbd "C-c b") 'ace-jump-buffer))
 (provide 'weih-basic)
