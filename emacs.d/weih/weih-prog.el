@@ -125,9 +125,13 @@
 ;; (require 'js2-rename-var)
 ;; (define-key js2-mode-map (kbd "C-c C-r") 'js2-rename-var)
 
-(try-require 'autopair
-	     (autopair-global-mode))
+;; (try-require 'autopair
+;; 	     (autopair-global-mode))
 
+(try-require 'smartparens
+             (smartparens-global-mode t)
+             (setq sp-ignore-modes-list
+                   (delete 'minibuffer-inactive-mode sp-ignore-modes-list)))
 ;; (if (require 'smartparens nil t)
 ;;     (smartparens-global-mode t)
 ;;   (require-not-found 'smartparens))
