@@ -46,8 +46,8 @@
 (setq message-sendmail-envelope-from 'header)
 (setq mail-envelope-from 'header)
 
-(try-require 'bbdb
-	     (define-key message-mode-map (kbd "<C-tab>") 'bbdb-complete-mail)
-	     (setq bbdb-complete-mail-allow-cycling t))
+;; (try-require 'bbdb
+;; 	     (define-key message-mode-map (kbd "<C-tab>") 'bbdb-complete-mail)
+;; 	     (setq bbdb-complete-mail-allow-cycling t))
 
 (provide 'weih-mail)
