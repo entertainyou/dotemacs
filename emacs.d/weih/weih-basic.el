@@ -301,4 +301,9 @@ Position the cursor at its beginning, according to the current mode."
 
 (try-require 'ace-jump-buffer
              (global-set-key (kbd "C-c b") 'ace-jump-buffer))
+
+(try-require 'increase-number
+             (global-set-key (kbd "C-c +") 'increment-integer-at-point)
+             (global-set-key (kbd "C-c -") 'decrement-integer-at-point))
+
 (provide 'weih-basic)
