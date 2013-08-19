@@ -257,7 +257,7 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
 ;; load generic modes which support e.g. batch files
 ;; (require 'generic-x)
 
-(mapcar (lambda (package) (try-require package)) '(dired-single awk-it midnight generic-x))
+(mapc (lambda (package) (try-require package)) '(dired-single awk-it midnight generic-x))
 
 (setq debug-on-error t)
 
