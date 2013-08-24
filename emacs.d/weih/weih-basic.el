@@ -72,7 +72,8 @@
 (column-number-mode t)
 
 (global-set-key (kbd "C-c f") 'find-grep)
-(global-set-key (kbd "C-c j") 'list-packages)
+(global-set-key (kbd "C-c j") 'package-list-packages)
+(global-set-key (kbd "C-c J") 'package-list-packages-no-fetch)
 
 (try-require 'duplicate-thing
 	     (global-set-key (kbd "C-c d") 'duplicate-thing))
