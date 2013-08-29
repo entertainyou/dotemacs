@@ -228,11 +228,15 @@
 ;;                    (ffip-local-patterns "*.js" "*.jade" "*.css" "*.json" "*.md"))
 
 (project-specifics "work/mobile"
-                   (setq compile-command "make -C ~/work/mobile/android -j 16 all PRODUCT=oupeng ANDROID_GOMA_WRAPPER=/usr/bin/ccache"))
+  (setq compile-command "make -C ~/work/mobile/android -j 16 all PRODUCT=oupeng ANDROID_GOMA_WRAPPER=/usr/bin/ccache BUILD_CHROMIUM=NO"))
 
 (try-require 'ac-slime
              (add-hook 'slime-mode-hook 'set-up-slime-ac)
              (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
              (eval-after-load "auto-complete"
                '(add-to-list 'ac-modes 'slime-repl-mode)))
+
+(try-require 'insert-shebang
+             (add-hook 'find-file-hook 'insert-shebang))
+
 (provide 'weih-prog)
