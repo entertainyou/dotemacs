@@ -136,8 +136,6 @@
 ;;     (smartparens-global-mode t)
 ;;   (require-not-found 'smartparens))
 
-(add-to-list 'auto-mode-alist '("\\.inc\\'" . c-mode))
-
 ;; (setq scheme-program-name "gsi -:d-")
 ;; (setq scheme-program-name "guile")
 ;; (setq scheme-program-arguments "")
@@ -156,9 +154,13 @@
   (setq mode-name "bream")
   (font-lock-add-keywords 'bream-mode '(("\\<modifies\\>" . 'font-lock-warning-face))))
 
-(add-to-list 'auto-mode-alist '("\\.bream\\'" . bream-mode))
-
-(add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
+(mapcar
+ (lambda (l)
+   (add-to-list 'auto-mode-alist l))
+  '(("\\.bream\\'" . bream-mode)
+   ("\\.php\\'" . php-mode)
+   ("\\.scheme\\'" . scheme-mode)
+   ("\\.inc\\" . c-mode)))
 
 (autoload 'mode-compile "mode-compile"
   "Command to compile current buffer file based on the major mode" t)
