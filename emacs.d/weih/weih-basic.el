@@ -307,4 +307,7 @@ Position the cursor at its beginning, according to the current mode."
              (global-set-key (kbd "C-c +") 'increment-integer-at-point)
              (global-set-key (kbd "C-c -") 'decrement-integer-at-point))
 
+(try-require 'anzu
+             (global-anzu-mode +1))
+
 (provide 'weih-basic)
