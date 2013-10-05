@@ -12,7 +12,7 @@
 ;;   (setq ac-sources (delq 'ac-source-yasnippet ac-sources))
 ;;   )
 
-(defun my-c-mode-common-hook()
+(defun my-c-mode-common-hook ()
   ;; (hs-minor-mode t)
   (subword-mode t)
   ;; (which-function-mode t)
@@ -28,12 +28,18 @@
   ;; (setq ac-sources (delq 'ac-source-gtags ac-sources))
   )
 
+(defun lisp-mode-hook ()
+  (setq smartparens-mode nil)
+  (paredit-mode))
 ;; (add-hook 'emacs-lisp-mode-hook 'remove-ac-yasnippet)
 ;; (add-hook 'c-mode-common-hook 'remove-ac-yasnippet)
 ;; (add-hook 'c++-mode-common-hook 'remove-ac-yasnippet)
 
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
 (add-hook 'c++-mode-common-hook 'my-c-mode-common-hook)
+
+(add-hook 'scheme-mode-hook 'lisp-mode-hook)
+(add-hook 'emacs-lisp-mode-hook 'lisp-mode-hook)
 
 (defun my-java-hook ()
   ;; (paredit-mode t)
@@ -160,7 +166,7 @@
   '(("\\.bream\\'" . bream-mode)
    ("\\.php\\'" . php-mode)
    ("\\.scheme\\'" . scheme-mode)
-   ("\\.inc\\" . c-mode)))
+   ("\\.inc\\'" . c-mode)))
 
 (autoload 'mode-compile "mode-compile"
   "Command to compile current buffer file based on the major mode" t)
