@@ -32,7 +32,7 @@
     (defun gnus-blocked-images () nil))
 
 (try-require 'notmuch
-	     (define-key notmuch-hello-mode-map (kbd "g") 'notmuch-hello-poll-and-update)
+ 	     (define-key notmuch-hello-mode-map (kbd "g") 'notmuch-poll-and-refresh-this-buffer)
 	     (define-key notmuch-hello-mode-map (kbd "G") 'self-insert-command)
 	     (define-key notmuch-hello-mode-map (kbd "n") 'widget-forward)
 	     (define-key notmuch-hello-mode-map (kbd "p") 'widget-backward)
