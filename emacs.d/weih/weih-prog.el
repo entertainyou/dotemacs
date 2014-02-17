@@ -30,7 +30,9 @@
 
 (defun lisp-mode-hook ()
   (setq smartparens-mode nil)
-  (paredit-mode))
+  ;; (paredit-mode)
+  (smartparens-strict-mode))
+
 ;; (add-hook 'emacs-lisp-mode-hook 'remove-ac-yasnippet)
 ;; (add-hook 'c-mode-common-hook 'remove-ac-yasnippet)
 ;; (add-hook 'c++-mode-common-hook 'remove-ac-yasnippet)
