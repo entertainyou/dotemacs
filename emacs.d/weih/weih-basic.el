@@ -310,4 +310,6 @@ Position the cursor at its beginning, according to the current mode."
 (try-require 'anzu
              (global-anzu-mode +1))
 
+(try-require 'grep-a-lot
+             (grep-a-lot-setup-keys))
 (provide 'weih-basic)
