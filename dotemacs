@@ -1,25 +1,16 @@
 ;; HUANG Wei's emacs setting
 
-
 ;;; This was installed by package-install.el.
 ;;; This provides support for the package system and
 ;;; interfacing with ELPA, the package archive.
 ;;; Move this code earlier if you want to reference
 ;;; packages in your .emacs.
 
-;; (setq load-path (cons "~/.emacs.d/" load-path))
 (setq load-path (cons "~/.emacs.d/weih/" load-path))
 
 (require 'weih-common)
 
-(mapcar (lambda (package) (try-require package)) '(weih-basic weih-prog weih-mail weih-prog weih-org weih-blog))
-; (require 'weih-basic nil t)
-; (require 'weih-prog nil t)
-; (require 'weih-mail nil t)
-; (require 'weih-blog nil t)
-; (require 'weih-org nil t)
-; (require 'weih-bts nil t)
-
+(mapcar (lambda (package) (try-require package)) '(weih-basic weih-prog weih-mail weih-prog weih-org weih-blog weih-smartparens))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
