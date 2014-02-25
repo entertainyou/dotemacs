@@ -136,14 +136,6 @@
 ;; (try-require 'autopair
 ;; 	     (autopair-global-mode))
 
-(try-require 'smartparens
-             (smartparens-global-mode t)
-             (setq sp-ignore-modes-list
-                   (delete 'minibuffer-inactive-mode sp-ignore-modes-list)))
-;; (if (require 'smartparens nil t)
-;;     (smartparens-global-mode t)
-;;   (require-not-found 'smartparens))
-
 ;; (setq scheme-program-name "gsi -:d-")
 ;; (setq scheme-program-name "guile")
 ;; (setq scheme-program-arguments "")
