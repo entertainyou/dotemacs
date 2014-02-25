@@ -27,12 +27,8 @@
 
 (setq fill-column 80)
 
-;; (load-theme 'tango-dark t)
-;; (when (require 'twilight-anti-bright 'nil t)
-;;   (load-theme 'twilight-anti-bright t))
-
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(load-theme 'twilight-anti-bright t)
+(try-require 'twilight-anti-bright-theme
+             (load-theme 'twilight-anti-bright t))
 
 (menu-bar-mode -1)
 (tool-bar-mode -1)
