@@ -308,4 +308,11 @@ Position the cursor at its beginning, according to the current mode."
 
 (try-require 'grep-a-lot
              (grep-a-lot-setup-keys))
+
+(defun kill-this-buffer ()
+  (interactive)
+  (kill-buffer (current-buffer)))
+
+(global-set-key (kbd "C-c k") 'kill-this-buffer)
+
 (provide 'weih-basic)
