@@ -31,11 +31,26 @@
 (if (not (fboundp 'gnus-blocked-images))
     (defun gnus-blocked-images () nil))
 
+(defun open-review-url ()
+  "Open the review for the current notmuch search view"
+  (interactive "")
+  (if (eq major-mode 'notmuch-search-mode)
+      (progn
+        (notmuch-search-show-thread)
+        (if (search-forward-regexp "https://critic\.oslo\.osa/r/[0-9]+" nil t)
+            (let ((review-url (match-string 0)))
+              (message "Found review url: %s" review-url)
+              (browse-url review-url))
+          (message "No review url found"))
+        (notmuch-kill-this-buffer))
+    (message "Not in notmuch-search-mode buffer.")))
+
 (try-require 'notmuch
  	     (define-key notmuch-hello-mode-map (kbd "g") 'notmuch-poll-and-refresh-this-buffer)
 	     (define-key notmuch-hello-mode-map (kbd "G") 'self-insert-command)
 	     (define-key notmuch-hello-mode-map (kbd "n") 'widget-forward)
 	     (define-key notmuch-hello-mode-map (kbd "p") 'widget-backward)
+             (define-key notmuch-search-mode-map (kbd "r") 'open-review-url)
 	     (setq notmuch-search-oldest-first 'nil))
 
 (setq message-auto-save-directory "~/.emacs.d/Mail/drafts")
