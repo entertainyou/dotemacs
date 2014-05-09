@@ -241,4 +241,5 @@
 (try-require 'insert-shebang
              (add-hook 'find-file-hook 'insert-shebang))
 
+(try-require 'java-snippets)
 (provide 'weih-prog)
