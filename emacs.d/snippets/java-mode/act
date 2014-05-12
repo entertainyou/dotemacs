@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: act
+# key: act
+# binding: direct-keybinding
+# --
+Activity ${1:activity} = SystemUtil.getActivity();$0

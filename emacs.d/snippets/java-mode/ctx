@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: ctx
+# key: ctx
+# binding: direct-keybinding
+# --
+Context ${1:context} = SystemUtil.getAppContext();$0
