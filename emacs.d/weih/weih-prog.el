@@ -12,6 +12,12 @@
 ;;   (setq ac-sources (delq 'ac-source-yasnippet ac-sources))
 ;;   )
 
+(try-require 'ac-c-headers
+             (add-hook 'c-mode-common-hook
+                       (lambda ()
+                         (add-to-list 'ac-sources 'ac-source-c-headers)
+                         (add-to-list 'ac-sources 'ac-source-c-header-symbols))))
+
 (defun my-c-mode-common-hook ()
   ;; (hs-minor-mode t)
   (subword-mode t)
