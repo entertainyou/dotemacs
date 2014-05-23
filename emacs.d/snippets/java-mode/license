@@ -1,0 +1,16 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: license
+# key: license
+# binding: direct-keybinding
+# --
+// -*- Mode: java; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*-
+//
+// Copyright (C) 2014 Opera Software ASA.  All rights reserved.
+//
+// This file is an original work developed by Opera Software ASA
+
+package com.opera.android$1;
+
+$2 ${3:class} `(file-name-base (buffer-name))` {
+$0
+}
