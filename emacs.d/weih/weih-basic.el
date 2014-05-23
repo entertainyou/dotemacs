@@ -127,16 +127,27 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
 
 (blink-cursor-mode)
 
-(defun echo-file-name (output-to-buffer)
+(defun print-message-and-keyring (output-to-buffer message)
   "Echo buffer's full-path"
   (interactive "P")
-  (let ((standard-output (if output-to-buffer (current-buffer) t))
-        (name (or buffer-file-name default-directory)))
-    (prin1 name)
-    (kill-new name)
+  (let ((standard-output (if output-to-buffer (current-buffer) t)))
+    (princ message)
+    (kill-new message)
     nil))
 
-(global-set-key (kbd "C-c e") 'echo-file-name)
+(defun echo-filepath (output-to-buffer)
+  "Echo buffer's full-path"
+  (interactive "P")
+  (print-message-and-keyring output-to-buffer (or buffer-file-name default-directory)))
+
+(defun echo-filename (output-to-buffer)
+  "Echo buffer's name"
+  (interactive "P")
+  (print-message-and-keyring output-to-buffer
+                             (or (and buffer-file-name (file-name-nondirectory buffer-file-name)) (buffer-name))))
+
+(global-set-key (kbd "C-c e") 'echo-filepath)
+(global-set-key (kbd "C-c C-e") 'echo-filename)
 
 (setq-default indent-tabs-mode nil)
 
