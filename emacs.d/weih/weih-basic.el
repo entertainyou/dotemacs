@@ -326,9 +326,9 @@ Position the cursor at its beginning, according to the current mode."
 
 (global-set-key (kbd "C-c k") 'kill-this-buffer)
 
-(require 'whitespace)
-(setq whitespace-line-column 100)
-(setq whitespace-style '(face empty tabs lines-tail trailing))
-(global-whitespace-mode)
+(try-require 'whitespace
+             (setq whitespace-line-column 110)
+             (setq whitespace-style '(face empty tabs lines-tail trailing))
+             (global-whitespace-mode))
 
 (provide 'weih-basic)
