@@ -271,7 +271,7 @@ This one changes the cursor color on each blink. Define colors in `blink-cursor-
 
 ;; (icomplete-mode t)
 
-(global-rainbow-delimiters-mode)
+;; (global-rainbow-delimiters-mode)
 
 (autoload 'zap-up-to-char "misc"
   "Kill up to,but not including ARGth occurrence of CHAR.")
