@@ -248,4 +248,8 @@
              (add-hook 'find-file-hook 'insert-shebang))
 
 (try-require 'java-snippets)
+
+(try-require 'sws-mode
+             (try-require 'jade-mode
+                          (add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))))
 (provide 'weih-prog)
