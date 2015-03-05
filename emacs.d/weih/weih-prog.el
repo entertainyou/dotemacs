@@ -122,7 +122,8 @@
 			 (set-fill-column 72)
 			 (auto-fill-mode t))))
 
-(try-require 'git-commit-mode)
+(try-require 'git-commit-mode
+             (setq git-commit-fill-column 100))
 
 ;; (add-to-list 'load-path "~/.emacs.d/weih/mark-multiple.el")
 ;; (require 'inline-string-rectangle)
