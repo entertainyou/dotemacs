@@ -116,7 +116,7 @@
 
 ;; (wrap-region-global-mode t)
 (try-require 'magit
-	     (global-set-key (kbd "C-c z") 'magit-blame-mode)
+	     (global-set-key (kbd "C-c z") 'magit-blame)
 	     (add-hook 'magit-log-edit-mode-hook
 		       (lambda ()
 			 (set-fill-column 72)
